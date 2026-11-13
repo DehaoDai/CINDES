@@ -24,13 +24,15 @@ The maintained code is in `cindes/` and `experiments/`. Each replication uses `s
 for scenario in spherical elliptical; do
   python -m experiments.table1 --scenario "$scenario" --method all \
     --protocol resampled --replications 100 --device cuda \
-    --output-dir results/main/table1
+    --output-dir results/main/table1 --figure-data-dir results/main/figure1
 done
 python -m experiments.summarize --table 1 \
   --input-dir results/main/table1 --output results/main/table1.csv
+python -m experiments.figure1 --input-dir results/main/figure1 \
+  --output results/main/figure1.pdf
 ```
 
-`--method all` runs CINDES, RFCDE, and MAF on the same generated data. The archived `NNestimation/exp_uncond.py` uses 15,000 generated observations, the first 6,000 for training, and the next 1,500 for validation; this runner follows those sizes. CINDES follows the archived minibatch-resampling protocol. The archived RFCDE/MAF source was found in `NNestimation/models/`, but this maintained runner still uses shared conditional estimators with a constant covariate; treat those two paths as reconstructed baselines. The full MAF schedule is 10,000 epochs with patience 100.
+`--method all` runs CINDES, RFCDE, and MAF on the same generated data. The archived `NNestimation/exp_uncond.py` uses 15,000 generated observations, the first 6,000 for training, and the next 1,500 for validation; this runner follows those sizes. CINDES follows the archived minibatch-resampling protocol. The archived RFCDE/MAF source was found in `NNestimation/models/`, but this maintained runner still uses shared conditional estimators with a constant covariate; treat those two paths as reconstructed baselines. The full MAF schedule is 10,000 epochs with patience 100. Figure 1 uses the first replication (seed 0), plotting the true density and all three estimates on each scenario's 100 × 100 grid. To reproduce only Figure 1, set `--replications 1` in the loop above.
 
 ### Table 2: univariate conditional density
 
@@ -112,14 +114,23 @@ python response/summarize.py --table 3 --input response/results_d32.jsonl \
   --joint response/jointtv_results.jsonl --output results/response/table3.csv
 python response/summarize.py --table 4 --input response/results_tree.jsonl \
   --output results/response/table4.csv
+python response/figures.py --figure 1 --input results/response/table1.csv \
+  --output results/response/figure1.pdf
+python response/figures.py --figure 2 --input results/response/table3.csv \
+  --output results/response/figure2.pdf
 ```
 
-The 32D joint-TV script runs three seeds although the PDF caption says ten. The tree joint-TV column has no corresponding code here. Reruns of the available scripts are new measurements and are not guaranteed to equal historical PDF entries.
+Response Figures 1 and 2 plot the summarized 16D and 32D chain results, respectively. Figure 2's joint-TV panel needs `run_jointtv.qsub` output. The 32D joint-TV script runs three seeds although the PDF caption says ten. The tree joint-TV column has no corresponding code here. Reruns of the available scripts are new measurements and are not guaranteed to equal historical PDF entries.
 
 ## Quick code check
 
 ```bash
-python -m experiments.table1 --scenario spherical --method all --quick --replications 1
+for scenario in spherical elliptical; do
+  python -m experiments.table1 --scenario "$scenario" --method all --quick \
+    --replications 1 --figure-data-dir results/figure1_quick
+done
+python -m experiments.figure1 --quick --input-dir results/figure1_quick \
+  --output results/figure1_quick.pdf
 python -m experiments.table2 --scenario nonlinear --sample-size 500 --method cindes --quick
 python -m experiments.table3 --response-dimension 4 --sample-size 500 --method cindes --quick
 python -m experiments.light_chamber_train --table 4 --method cindes --quick \

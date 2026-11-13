@@ -6,6 +6,7 @@ from dataclasses import replace
 from datetime import datetime, timezone
 from pathlib import Path
 from statistics import mean, stdev
+from typing import Optional
 
 import numpy as np
 
@@ -55,6 +56,10 @@ def parse_arguments() -> argparse.Namespace:
     )
     parser.add_argument("--output-dir", type=Path, default=Path("results/table1"))
     parser.add_argument(
+        "--figure-data-dir", type=Path,
+        help="Save the first replication's density grids for main-paper Figure 1.",
+    )
+    parser.add_argument(
         "--quick",
         action="store_true",
         help="Run a small smoke experiment; quick results are not full-scale.",
@@ -78,6 +83,7 @@ def run_replication(
     quick: bool,
     protocol: str,
     method: str = "cindes",
+    figure_data_dir: Optional[Path] = None,
 ) -> dict[str, object]:
     seed = base_seed + replication_index
     seed_everything(seed)
@@ -158,7 +164,10 @@ def run_replication(
             weight_decay_candidates=(1e-4,) if quick else (1e-3, 5e-4, 2e-4, 1e-4, 0.0),
             seed=seed, device=device,
         )
-        estimator.fit(x=x_train, y=training_responses, x_valid=x_valid, y_valid=validation_responses)
+        estimator.fit(
+            x=x_train, y=training_responses,
+            x_valid=x_valid, y_valid=validation_responses,
+        )
         estimated_density = estimator.conditional_density_grid(
             x=np.zeros((1, 1), dtype=np.float32), y=grid,
         ).reshape(-1)
@@ -172,6 +181,23 @@ def run_replication(
         raise ValueError(f"unknown method: {method}")
     true_density = scenario.density(grid)
     metric = mean_absolute_density_error(estimated_density, true_density)
+
+    figure_data_path = None
+    if figure_data_dir is not None:
+        figure_data_dir.mkdir(parents=True, exist_ok=True)
+        mode = "quick" if quick else "full"
+        figure_data_path = figure_data_dir / (
+            f"figure1_{scenario_name}_{method}_seed{seed}_{mode}.npz"
+        )
+        np.savez_compressed(
+            figure_data_path,
+            grid=grid,
+            true_density=true_density,
+            estimated_density=estimated_density,
+            lower=all_responses.min(axis=0),
+            upper=all_responses.max(axis=0),
+            grid_size=grid_size,
+        )
 
     return {
         "seed": seed,
@@ -188,6 +214,7 @@ def run_replication(
         "empirical_tv": metric,
         "evaluation_lower": all_responses.min(axis=0).tolist(),
         "evaluation_upper": all_responses.max(axis=0).tolist(),
+        "figure_data_path": str(figure_data_path) if figure_data_path else None,
         **details,
     }
 
@@ -199,10 +226,15 @@ def save_results(
 ) -> Path:
     summary = {}
     for method in dict.fromkeys(result["method"] for result in results):
-        metric_values = [float(result["empirical_tv"]) for result in results if result["method"] == method]
+        metric_values = [
+            float(result["empirical_tv"])
+            for result in results if result["method"] == method
+        ]
         summary[method] = {
             "empirical_tv_mean": mean(metric_values),
-            "empirical_tv_standard_deviation": stdev(metric_values) if len(metric_values) > 1 else 0.0,
+            "empirical_tv_standard_deviation": (
+                stdev(metric_values) if len(metric_values) > 1 else 0.0
+            ),
         }
     payload = {
         "experiment": "table1",
@@ -252,6 +284,7 @@ def main() -> None:
                 quick=arguments.quick,
                 protocol=arguments.protocol,
                 method=method,
+                figure_data_dir=(arguments.figure_data_dir if replication_index == 0 else None),
             )
             results.append(result)
             print(
