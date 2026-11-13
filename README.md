@@ -2,6 +2,22 @@
 
 Code to rerun the CINDES main-paper and reviewer-response experiments. This repository includes the small Light Chamber sensor CSV, but **no results, generated tables, or tests**. New outputs go to ignored local paths. Full neural-network runs require substantial compute.
 
+## Citation
+
+This repository accompanies [CINDES: Classification induced neural density estimator and simulator](https://arxiv.org/abs/2510.00367). If you use this code, please cite our paper:
+
+```bibtex
+@misc{dai2025cindes,
+  title={CINDES: Classification induced neural density estimator and simulator},
+  author={Dehao Dai and Jianqing Fan and Yihong Gu and Debarghya Mukherjee},
+  year={2025},
+  eprint={2510.00367},
+  archivePrefix={arXiv},
+  primaryClass={stat.ML},
+  url={https://arxiv.org/abs/2510.00367}
+}
+```
+
 ## Setup
 
 From the repository root (Python 3.11 recommended):
