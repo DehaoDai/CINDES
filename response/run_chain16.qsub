@@ -1,0 +1,20 @@
+#!/bin/bash -l
+#$ -N cindes_chain16
+#$ -P dgmgrp
+#$ -l gpus=1
+#$ -l gpu_type=A100
+#$ -pe omp 4
+#$ -l h_rt=12:00:00
+#$ -j y
+#$ -o chain16.log
+#$ -cwd
+
+module load miniconda
+conda activate cindes
+
+# Reconstructed from the archived chain script defaults; the historical job file is unavailable.
+python cindes_vs_dsm_mrf.py --study --d 16 \
+    --n-list 500 1000 2000 4000 8000 16000 --seeds 10 \
+    --n-gen 10000 --K 1024 --M 200 \
+    --cindes-steps 20000 --dsm-steps 60000 \
+    --out results.jsonl

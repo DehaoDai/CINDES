@@ -1,0 +1,26 @@
+#!/bin/bash -l
+#$ -N cindes_tree
+#$ -P dgmgrp
+#$ -l gpus=1
+#$ -l gpu_type=A100
+#$ -pe omp 4
+#$ -l h_rt=12:00:00
+#$ -j y
+#$ -o cindes_tree.log
+#$ -cwd
+
+module load miniconda
+conda activate cindes
+
+echo "Host: $(hostname)  GPU: $(nvidia-smi --query-gpu=name --format=csv,noheader)"
+
+# full study (resumable; writes results_tree.jsonl)
+python cindes_vs_dsm_tree.py --study --seeds 10 \
+    --n-list 500 1000 2000 4000 8000 16000 \
+    --n-gen 10000 --K 1024 --M 200 \
+    --cindes-steps 20000 --dsm-steps 60000
+
+# qualitative sample sets at n=16000 (saves qual_cindes_tree.npz / qual_dsm_tree.npz)
+python cindes_vs_dsm_tree.py --n 16000 --seed 0 \
+    --n-gen 10000 --K 1024 --M 200 \
+    --cindes-steps 20000 --dsm-steps 60000

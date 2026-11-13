@@ -1,0 +1,22 @@
+#!/bin/bash -l
+#$ -N cindes_d32
+#$ -P dgmgrp
+#$ -l gpus=1
+#$ -l gpu_c=7.0
+#$ -pe omp 4
+#$ -l h_rt=12:00:00
+#$ -j y
+#$ -o cindes_d32.log
+#$ -cwd
+
+module load miniconda
+conda activate cindes
+
+echo "Host: $(hostname)  GPU: $(nvidia-smi --query-gpu=name --format=csv,noheader)"
+
+python cindes_vs_dsm_mrf.py --study \
+    --d 32 --coupling 0.55 --unary 0.3 \
+    --n-list 500 1000 2000 4000 8000 16000 --seeds 10 \
+    --n-gen 10000 --K 1024 --M 200 \
+    --cindes-steps 20000 --dsm-steps 60000 \
+    --out results_d32.jsonl

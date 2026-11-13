@@ -1,0 +1,15 @@
+#!/bin/bash -l
+#$ -N jointtv
+#$ -P dgmgrp
+#$ -l gpus=1
+#$ -l gpu_type=A100
+#$ -pe omp 4
+#$ -l h_rt=02:00:00
+#$ -j y
+#$ -o jointtv.log
+#$ -cwd
+
+module load miniconda
+conda activate cindes
+
+python jointtv_vs_n.py
