@@ -68,7 +68,7 @@ This runs CINDES, RFCDE, and MAF. The reported box-integrated TV equals `0.5 × 
 
 ## Main paper — Tables 4–5, Light Chamber
 
-The sensor CSV is included at `data/light_chamber/uniform_reference.csv`, copied from `NNestimation/dataset/lightchamber/lt_interventions_standard_v1/uniform_reference.csv`. The training runner uses 3,000 sampled rows per replication, standardizes each sensor column, takes 40% of the pre-test pool for training, 10% for validation, and the last 500 rows for testing. It starts with seed 1000 and writes the matrices expected by the aggregation commands below. Full runs are computationally expensive.
+The sensor CSV is included at `data/light_chamber/uniform_reference.csv`, copied from `NNestimation/dataset/lightchamber/lt_interventions_standard_v1/uniform_reference.csv`. The training runner uses 3,000 sampled rows per replication, standardizes each sensor column, takes 40% of the pre-test pool for training, 10% for validation, and the last 500 rows for testing. It starts with seed 1000. Full runs are computationally expensive.
 
 ```bash
 for method in baseline cindes rfcde maf lincde; do
@@ -85,12 +85,7 @@ done
 
 The maintained CINDES implementation uses a uniform response reference; the archived Light Chamber script selected a Gaussian reference. Each replication now draws independently from the original CSV; the archived script accidentally resampled its previous subset on later replications. RFCDE uses the archived Gaussian fake-response reference, while LinCDE needs the optional R dependency. New NLLs are rerun measurements, so they may differ from historical table entries.
 
-You can also aggregate existing per-replication NLL matrices. Put them under local `data/`; only the sensor CSV above is tracked by Git:
-
-| Table | Required filenames | Input shape |
-| --- | --- | --- |
-| 4 | `result_BaseLine.csv`, `result_NCDE.csv`, `result_RFCDE.csv`, `result_MAF.csv`, `result_LinCDE.csv` | Each `12 × 100` |
-| 5 | `result_BaseLine.csv`, `result_CINDES.csv`, `result_RFCDE.csv`, `result_MAF.csv` | Each `4 × 100` |
+After the training runs finish, generate Tables 4 and 5:
 
 ```bash
 python -m experiments.light_chamber \
