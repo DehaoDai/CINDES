@@ -147,6 +147,27 @@ class LinCDEEstimator:
             raise RuntimeError("LinCDE returned invalid density values")
         return values
 
+    def paired_log_density(self, x: np.ndarray, y: np.ndarray, *,
+                           normalization_samples: int = 1_000,
+                           seed: Optional[int] = None) -> np.ndarray:
+        """Matched-pair log densities with the archived test-range normalizer."""
+        covariates, responses = _matrix(x, "x"), _matrix(y, "y")
+        if responses.shape[1] != 1 or len(covariates) != len(responses):
+            raise ValueError("LinCDE paired evaluation needs matched univariate rows")
+        lower, upper = float(responses.min()), float(responses.max())
+        if upper <= lower:
+            raise ValueError("test response range must be positive")
+        rng = np.random.RandomState(self.seed if seed is None else seed)
+        fake_y = rng.uniform(lower, upper, size=normalization_samples)
+        observed = self._predict_paired(covariates, responses[:, 0])
+        normalizer = np.empty(len(covariates))
+        for index, row in enumerate(covariates):
+            repeated_x = np.repeat(row[None, :], normalization_samples, axis=0)
+            normalizer[index] = (upper - lower) * self._predict_paired(
+                repeated_x, fake_y).mean()
+        return np.log(np.maximum(observed, np.finfo(float).tiny)) - np.log(
+            np.maximum(normalizer, np.finfo(float).tiny))
+
     @staticmethod
     def _r_interface():
         try:

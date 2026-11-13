@@ -24,8 +24,9 @@ from cindes.reproducibility import (
     seed_everything,
 )
 
-TRAIN_SIZE = 12_000
-VALIDATION_RATIO = 0.25
+SOURCE_SAMPLE_SIZE = 15_000
+TRAIN_SIZE = 6_000
+VALIDATION_SIZE = 1_500
 GRID_SIZE = 100
 MAX_EPOCHS = 10_000
 EARLY_STOPPING_PATIENCE = 100
@@ -84,12 +85,13 @@ def run_replication(
     scenario = scenario_from_name(scenario_name)
 
     train_size = 512 if quick else TRAIN_SIZE
-    validation_size = int(VALIDATION_RATIO * train_size)
+    validation_size = 128 if quick else VALIDATION_SIZE
     grid_size = 25 if quick else GRID_SIZE
 
-    all_responses = scenario.sample(train_size + validation_size, rng).astype(np.float32)
+    source_sample_size = 640 if quick else SOURCE_SAMPLE_SIZE
+    all_responses = scenario.sample(source_sample_size, rng).astype(np.float32)
     training_responses = all_responses[:train_size]
-    validation_responses = all_responses[train_size:]
+    validation_responses = all_responses[train_size:train_size + validation_size]
 
     grid = evaluation_grid(
         all_responses.min(axis=0),
@@ -151,8 +153,8 @@ def run_replication(
         x_train = np.zeros((train_size, 1), dtype=np.float32)
         x_valid = np.zeros((validation_size, 1), dtype=np.float32)
         estimator = ConditionalMAF(
-            depth=3, width=64, max_epochs=3 if quick else 200,
-            patience=1 if quick else 2, batch_size=500,
+            depth=3, width=64, max_epochs=3 if quick else MAX_EPOCHS,
+            patience=1 if quick else EARLY_STOPPING_PATIENCE, batch_size=BATCH_SIZE,
             weight_decay_candidates=(1e-4,) if quick else (1e-3, 5e-4, 2e-4, 1e-4, 0.0),
             seed=seed, device=device,
         )
@@ -181,6 +183,7 @@ def run_replication(
         "seed_contract": seed_contract(base_seed, replication_index),
         "train_size": train_size,
         "validation_size": validation_size,
+        "source_sample_size": source_sample_size,
         "grid_size": grid_size,
         "empirical_tv": metric,
         "evaluation_lower": all_responses.min(axis=0).tolist(),

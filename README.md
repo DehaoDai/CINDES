@@ -30,7 +30,7 @@ python -m experiments.summarize --table 1 \
   --input-dir results/main/table1 --output results/main/table1.csv
 ```
 
-`--method all` runs CINDES, RFCDE, and MAF on the same generated data. CINDES follows the archived minibatch-resampling protocol. The RFCDE/MAF paths use the shared conditional estimators with a constant covariate because their exact historical training scripts were not found; treat those as reconstructed baselines.
+`--method all` runs CINDES, RFCDE, and MAF on the same generated data. The archived `NNestimation/exp_uncond.py` uses 15,000 generated observations, the first 6,000 for training, and the next 1,500 for validation; this runner follows those sizes. CINDES follows the archived minibatch-resampling protocol. The archived RFCDE/MAF source was found in `NNestimation/models/`, but this maintained runner still uses shared conditional estimators with a constant covariate; treat those two paths as reconstructed baselines. The full MAF schedule is 10,000 epochs with patience 100.
 
 ### Table 2: univariate conditional density
 
@@ -68,7 +68,26 @@ This runs CINDES, RFCDE, and MAF. The reported box-integrated TV equals `0.5 × 
 
 ## Main paper — Tables 4–5, Light Chamber
 
-The original sensor dataset and complete baseline training scripts were not found. The included code **aggregates externally supplied per-replication NLL matrices**; it cannot retrain these methods from sensor observations. Place inputs under local `data/` (ignored by Git):
+The archived `NNestimation/app_lightchamber.py` and sensor CSV were found locally. Put `uniform_reference.csv` at `data/light_chamber/uniform_reference.csv` (ignored by Git); its source path in `NNestimation` is `dataset/lightchamber/lt_interventions_standard_v1/uniform_reference.csv`. The training runner uses 3,000 sampled rows per replication, standardizes each sensor column, takes 40% of the pre-test pool for training, 10% for validation, and the last 500 rows for testing. It starts with seed 1000 and writes the matrices expected by the aggregation commands below. Full runs are computationally expensive.
+
+```bash
+mkdir -p data/light_chamber
+# Supply uniform_reference.csv in the path above before running.
+for method in baseline cindes rfcde maf lincde; do
+  python -m experiments.light_chamber_train --table 4 --method "$method" \
+    --data data/light_chamber/uniform_reference.csv --sample-size 3000 \
+    --replications 100 --device cuda --output-dir data/light_chamber/table4
+done
+for method in baseline cindes rfcde maf; do
+  python -m experiments.light_chamber_train --table 5 --method "$method" \
+    --data data/light_chamber/uniform_reference.csv --sample-size 3000 \
+    --replications 100 --device cuda --output-dir data/light_chamber/table5
+done
+```
+
+The maintained CINDES implementation uses a uniform response reference; the archived Light Chamber script selected a Gaussian reference. Each replication now draws independently from the original CSV; the archived script accidentally resampled its previous subset on later replications. RFCDE uses the archived Gaussian fake-response reference, while LinCDE needs the optional R dependency. New NLLs are rerun measurements, so they may differ from historical table entries.
+
+You can also aggregate existing per-replication NLL matrices. Place them under local `data/` (ignored by Git):
 
 | Table | Required filenames | Input shape and rule |
 | --- | --- | --- |
@@ -110,6 +129,9 @@ The response PDF also contains a second 16D chain table (Table 2), but its disti
 python -m experiments.table1 --scenario spherical --method all --quick --replications 1
 python -m experiments.table2 --scenario nonlinear --sample-size 500 --method cindes --quick
 python -m experiments.table3 --response-dimension 4 --sample-size 500 --method cindes --quick
+python -m experiments.light_chamber_train --table 4 --method cindes --quick \
+  --sample-size 600 --replications 1 --row 0 \
+  --data data/light_chamber/uniform_reference.csv --output-dir results/light_smoke
 python response/cindes_vs_dsm_mrf.py --help
 ```
 

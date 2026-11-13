@@ -293,3 +293,16 @@ class ConditionalMAF:
         if self.model_ is None:
             raise RuntimeError("fit must be called before density evaluation")
         return self.model_
+
+    @torch.no_grad()
+    def paired_log_density(self, x: np.ndarray, y: np.ndarray) -> np.ndarray:
+        """Log density for matched covariate-response pairs."""
+        model = self._require_fitted()
+        covariates, responses = _matrix(x, "x"), _matrix(y, "y")
+        if covariates.shape[0] != responses.shape[0]:
+            raise ValueError("x and y must have the same number of rows")
+        if covariates.shape[1] != self.covariate_dimension_ or responses.shape[1] != self.response_dimension_:
+            raise ValueError("test dimensions differ from fitted data")
+        model.eval()
+        return model(torch.from_numpy(covariates).to(self.device),
+                     torch.from_numpy(responses).to(self.device)).cpu().numpy()
