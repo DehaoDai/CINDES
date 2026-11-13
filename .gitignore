@@ -8,11 +8,14 @@ build/
 dist/
 results/
 logs/
-data/
+data/*
+!data/light_chamber/
+data/light_chamber/*
 archive/
 generated/
 reference/
 *.csv
+!data/light_chamber/uniform_reference.csv
 *.jsonl
 *.npy
 *.npz
