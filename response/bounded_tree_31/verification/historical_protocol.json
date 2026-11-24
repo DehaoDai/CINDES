@@ -1,0 +1,65 @@
+{
+  "historical_sample_sizes": [
+    2000,
+    4000,
+    6000,
+    8000
+  ],
+  "historical_seeds": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19
+  ],
+  "historical_method_records": 160,
+  "historical_configurations_match": true,
+  "experiment_config": {
+    "G": 200,
+    "K": 5000,
+    "M": 200,
+    "R": 25.0,
+    "T": 3.0,
+    "cindes_final": "none",
+    "cindes_steps_requested": 20000,
+    "coupling": 0.55,
+    "d": 31,
+    "delta": 0.001,
+    "denoise_final": false,
+    "dsm_steps_requested": 60000,
+    "fake_ratio": 2,
+    "generation_batch": 64,
+    "n_gen": 10000,
+    "n_ref": 20000,
+    "pot_seed": 11,
+    "protocol": "tree_no_terminal_v1",
+    "reference_seed": 12345,
+    "training_batch": 256,
+    "unary": 0.3
+  },
+  "original_scc_source_sha256": {
+    "cindes_vs_dsm_mrf.py": "2de2546af8422b2cf5b6c28bcd6788b286ed6ec36bec31ef92ff0bc77743ddae",
+    "cindes_vs_dsm_tree.py": "d39e6b1f72cfabf8daa79b796b043a17e0819aa21af2c8a9d9478c0de38797d1",
+    "tree_mrf.py": "2574d1d270cdc5ea8dd7c342ed7cb4d6a738f7edde4e71e646eeb680fc4ea450"
+  },
+  "source_archive_sha256": {
+    "cindes_vs_dsm_BU_SCC.zip": "517f83ceea25125972fc749c3338f34ff5d962037dedee3f034dca8becc59918",
+    "CINDES/bounded_results_for_tables.zip": "980f24d004618dc05fde53e39b0273c0e0d4142a603d5882e0fdbc33763130b9"
+  },
+  "provenance_note": "Core bytes match the supplied original SCC archive. Historical result records have matching scientific configurations but do not contain source hashes or complete per-run environment metadata."
+}

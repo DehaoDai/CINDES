@@ -1,0 +1,52 @@
+{
+  "status": "passed",
+  "study_id": "1832ac1cbf9358b8642b2996b73f513e92d088dc5cada686f03e74c7edabee83",
+  "scope": "Scientific source identity, saved-run aggregation and table generation; no model fitting or GPU execution.",
+  "sources": {
+    "status": "passed",
+    "original_python_files": 14,
+    "all_original_source_hashes_match": true,
+    "frozen_study_identity_matches": true
+  },
+  "records": {
+    "status": "passed",
+    "paired_runs": 80,
+    "method_results": 160,
+    "shared_reference": true,
+    "paired_gpu_environments_match": true,
+    "gpu_allocations": {
+      "NVIDIA L40S": 64,
+      "NVIDIA A40": 14,
+      "NVIDIA RTX PRO 6000 Blackwell Server Edition": 2
+    }
+  },
+  "tables": {
+    "status": "passed",
+    "summary_rows": 72,
+    "mean_sd_se_values_checked": 216,
+    "formatted_mean_sd_values_checked": 144,
+    "maximum_absolute_difference_from_expected": 3.552713678800501e-15,
+    "maximum_absolute_difference_from_table_builder": 3.552713678800501e-15,
+    "both_table_labels_and_font_settings_checked": true,
+    "scope": "Reaggregation of recorded outcomes and timers; no raw-sample metric recomputation."
+  },
+  "original_archive": {
+    "status": "passed",
+    "archive_sha256": "f9f46f25becbbc66dbaaea520760142823f3716758d4585f565e20f4e0ca0173",
+    "manifested_members_verified": 815,
+    "all_retained_run_record_values_match_original": true,
+    "original_accuracy_summary_matches": true,
+    "scope": "Original compact return archive, which does not contain the raw arrays/checkpoints."
+  },
+  "mock_scheduler": {
+    "status": "passed",
+    "real_scheduler_invoked": false,
+    "mock_qsub_calls": 3,
+    "dependency_chain": "reference -> array80 -> summary",
+    "missing_project_rejected": true,
+    "dry_run_submits_nothing": true,
+    "caller_relative_paths_with_spaces_preserved": true,
+    "custom_activation_script_transmitted": true,
+    "array_job_reply_parsed": true
+  }
+}

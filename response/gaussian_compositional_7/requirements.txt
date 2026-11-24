@@ -1,0 +1,6 @@
+# Only needed to rerun the numerical experiment.
+# reproduce_tables.py and the independent numerical audit use the standard library.
+# Install the appropriate CPU/CUDA PyTorch build first; see README.md.
+numpy
+scipy
+torch

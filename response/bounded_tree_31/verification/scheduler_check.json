@@ -1,0 +1,20 @@
+{
+  "check": "mocked_scc_submission",
+  "real_scheduler_called": false,
+  "scientific_results": false,
+  "checks": {
+    "dry_run_has_no_files_or_jobs_and_cli_overrides_environment": true,
+    "full80_two_jobs_with_embedded_range_cap_and_summary_dependency": true,
+    "space_containing_paths_preserved_as_single_arguments": true,
+    "commands_responses_job_ids_and_submission_scripts_saved": true,
+    "duplicate_submission_guard": true,
+    "resume_blocks_active_or_unreadable_scheduler_state": true,
+    "resume_proceeds_after_recorded_jobs_leave_scheduler": true,
+    "pilot_task1_and_subsets21_40_and61_80_use_one_array_job_each": true,
+    "atomic_submission_lock_blocks_concurrent_submitter": true,
+    "malformed_array_template_fails_before_any_job_or_output_creation": true,
+    "later_submission_failure_preserves_accepted_array_job_id": true,
+    "unparsed_prior_submission_response_blocks_unsafe_resume": true
+  },
+  "passed": true
+}

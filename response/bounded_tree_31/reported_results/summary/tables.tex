@@ -1,0 +1,58 @@
+\documentclass{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{booktabs,amsmath}
+\begin{document}
+\section*{Bounded CINDES versus DSM experiment}
+These tables summarize 80 complete paired replications (160 method results) for the full profile.
+
+% Requires \usepackage{booktabs,amsmath}. Generated from validated per-replication results.
+\begin{table}[htbp]
+\centering
+\small
+\caption{Bounded binary-tree experiment. Mean $\pm$ sample standard deviation over 20 paired replications at each sample size. TV$_1$ and TV$_2$ are average histogram total variation errors for coordinate and parent--child marginals. The log-likelihood gap is signed. Boldface marks a smaller CINDES mean within a sample size and metric; it does not indicate a significance test.}
+\label{tab:cindes_bounded_tree}
+\begin{tabular}{rlccc}
+\toprule
+$n$ & Method & TV$_1$ & TV$_2$ & Log-likelihood gap \\
+\midrule
+500 & CINDES & $\boldsymbol{0.1063 \pm 0.0212}$ & $\boldsymbol{0.2238 \pm 0.0221}$ & $\boldsymbol{4.1978 \pm 0.2829}$ \\
+ & DSM & $0.1590 \pm 0.0019$ & $0.2693 \pm 0.0026$ & $4.4031 \pm 0.1172$ \\
+\addlinespace
+1000 & CINDES & $\boldsymbol{0.0889 \pm 0.0176}$ & $\boldsymbol{0.2072 \pm 0.0175}$ & $\boldsymbol{4.2659 \pm 0.8818}$ \\
+ & DSM & $0.1398 \pm 0.0020$ & $0.2506 \pm 0.0024$ & $4.5587 \pm 0.0946$ \\
+\addlinespace
+1500 & CINDES & $\boldsymbol{0.0815 \pm 0.0069}$ & $\boldsymbol{0.1988 \pm 0.0071}$ & $\boldsymbol{3.9105 \pm 0.1564}$ \\
+ & DSM & $0.1342 \pm 0.0016$ & $0.2454 \pm 0.0019$ & $4.5615 \pm 0.0951$ \\
+\addlinespace
+2000 & CINDES & $\boldsymbol{0.0772 \pm 0.0086}$ & $\boldsymbol{0.1954 \pm 0.0074}$ & $\boldsymbol{3.8222 \pm 0.1444}$ \\
+ & DSM & $0.1325 \pm 0.0026$ & $0.2435 \pm 0.0027$ & $4.5416 \pm 0.0919$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% Requires \usepackage{booktabs,amsmath}. The font matches the accuracy table.
+\begin{table}[htbp]
+\centering
+\small
+\caption{Computation time for the bounded binary-tree experiment, in seconds. Mean $\pm$ sample standard deviation over 20 paired replications at each sample size. Each time includes model training and generation of the samples used for evaluation. Data sampling and metric evaluation are excluded.}
+\label{tab:cindes_bounded_runtime}
+\begin{tabular}{rlc}
+\toprule
+$n$ & Method & Training and generation time (s) \\
+\midrule
+500 & CINDES & $177.96 \pm 31.58$ \\
+ & DSM & $62.64 \pm 12.02$ \\
+\addlinespace
+1000 & CINDES & $193.28 \pm 51.52$ \\
+ & DSM & $67.76 \pm 13.02$ \\
+\addlinespace
+1500 & CINDES & $206.58 \pm 41.64$ \\
+ & DSM & $73.17 \pm 9.82$ \\
+\addlinespace
+2000 & CINDES & $200.02 \pm 61.09$ \\
+ & DSM & $67.73 \pm 12.34$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\end{document}

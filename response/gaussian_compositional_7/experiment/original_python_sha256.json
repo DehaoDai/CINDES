@@ -1,0 +1,16 @@
+{
+  "evaluate.py": "036b249e522ae932908b36e9c8d4d4fd2e724c6c74edcb087f279b3d99ae1db5",
+  "generation.py": "050117899fdb0f612963816f2fc256acfccd6c822a357acca660f54d5161cc2b",
+  "make_return_bundle.py": "f111a74f1eba3031e760a38629d6b42fa667ac52e88c7ce6282feacd5437df1c",
+  "metrics.py": "32b2dac79f0956c53564487a29668585d65259059377fc30c570fa581ea58b86",
+  "prepare_reference.py": "62b2391c3bbf40515484cb4825a762048624960ab134828529f0c77a24fc46b0",
+  "qa_checks.py": "ef41ef696d41b46f8f2545fa729fb3185e9f2e5e586302cf77582effe967df4d",
+  "run_task.py": "73116f1d270971e910eb5570f4199926d5c500407bdd628b3638e73b349672e1",
+  "study.py": "701a53d9e51c6b344bd8f38d373d92b2cfc0b01b91cfcbb466aabb192dd7f444",
+  "summarize_results.py": "e01847dc1ed40818375a1bbff25f8ead3e2d3705855e4621dab5be30cd0c2502",
+  "source/balanced_training.py": "0b95d9a68ebaaf348c154411f4d1bb01283337c44a3f8ea0b88bf46780f822dc",
+  "source/compositional_dgp.py": "2f803bbb95590926fc15774afa22d1764936af7c8e83aceb4ea8eeab13486b5f",
+  "source/l1_training.py": "5bd08c72d6056d8fdca9229404a12a7efe5e45cef90724121f6b701502bedded",
+  "source/subgaussian_methods.py": "e65c4584e965e157ed6f7e8d1044abba8560460f92289b73e43d16e6ec4ad5cd",
+  "source/training_loop.py": "f64f30da01548ee5f302c4c1b9928119219b940932e4a291129a15f28b07acc3"
+}

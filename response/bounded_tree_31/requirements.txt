@@ -1,0 +1,4 @@
+# Install a CPU or CUDA PyTorch build appropriate for your machine first.
+# These are API requirements, not a lock file for the historical SCC run.
+numpy>=1.24
+torch>=2.0

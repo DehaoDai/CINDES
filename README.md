@@ -1,6 +1,6 @@
 # CINDES reproduction code
 
-Code to rerun the CINDES main-paper and reviewer-response experiments. This repository includes the small Light Chamber sensor CSV, but **no results, generated tables, or tests**. New outputs go to ignored local paths. Full neural-network runs require substantial compute.
+Code to rerun the CINDES main-paper and reviewer-response experiments. The main-paper runners include the small Light Chamber sensor CSV but no saved results. The reviewer-response studies in [`response/`](response/) include recorded results, tables, and verification checks. New outputs go to ignored local paths. Full neural-network runs require substantial compute.
 
 ## Citation
 
@@ -112,31 +112,12 @@ python -m experiments.light_chamber_multi \
   --input-dir data/light_chamber/table5 --output-dir results/main/table5
 ```
 
-## Reviewer response — chain and tree MRFs
+## Reviewer response — current experiments
 
-The original SCC code is in `response/`. Its scripts use local imports, so submit jobs **from that directory**. The job files assume BU SCC `qsub` and a Conda environment named `cindes`. They write ignored JSONL outputs in `response/`.
+See [`response/README.md`](response/README.md) for the experiment map, table-reproduction commands, and the distinctions between the current PDF tables and earlier draft prose. The current studies are:
 
-```bash
-cd response
-qsub run_chain16.qsub    # Response Table 1: 16D chain, 10 seeds
-qsub run_scc_d32.qsub   # Response Table 3: 32D chain, 10 seeds
-qsub run_jointtv.qsub   # Table 3 joint TV, 3 seeds
-qsub run_tree.qsub      # Response Table 4: 31D tree, 10 seeds
-cd ..
-
-python response/summarize.py --table 1 --input response/results.jsonl \
-  --output results/response/table1.csv
-python response/summarize.py --table 3 --input response/results_d32.jsonl \
-  --joint response/jointtv_results.jsonl --output results/response/table3.csv
-python response/summarize.py --table 4 --input response/results_tree.jsonl \
-  --output results/response/table4.csv
-python response/figures.py --figure 1 --input results/response/table1.csv \
-  --output results/response/figure1.pdf
-python response/figures.py --figure 2 --input results/response/table3.csv \
-  --output results/response/figure2.pdf
-```
-
-Response Figures 1 and 2 plot the summarized 16D and 32D chain results, respectively. Figure 2's joint-TV panel needs `run_jointtv.qsub` output. The 32D joint-TV script runs three seeds although the PDF caption says ten. The tree joint-TV column has no corresponding code here. Reruns of the available scripts are new measurements and are not guaranteed to equal historical PDF entries.
+- [`response/bounded_tree_31/`](response/bounded_tree_31/): bounded 31D binary-tree model, 20 paired replications at each of four sample sizes; saved results and Table 1.
+- [`response/gaussian_compositional_7/`](response/gaussian_compositional_7/): unbounded 7D Gaussian-tail compositional model, 20 paired replications at each of four sample sizes; saved results and Tables 2–3.
 
 ## Quick code check
 
@@ -152,7 +133,6 @@ python -m experiments.table3 --response-dimension 4 --sample-size 500 --method c
 python -m experiments.light_chamber_train --table 4 --method cindes --quick \
   --sample-size 600 --replications 1 --row 0 \
   --data data/light_chamber/uniform_reference.csv --output-dir results/light_smoke
-python response/cindes_vs_dsm_mrf.py --help
 ```
 
-These commands write only ignored local output; this repository includes no recorded results.
+These main-paper quick checks write only ignored local output. The response packages include recorded results.

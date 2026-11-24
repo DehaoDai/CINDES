@@ -1,0 +1,107 @@
+{
+  "status": "passed",
+  "real_SCC_jobs_submitted": false,
+  "full_experiment_executed": false,
+  "script_sha256": "ef41ef696d41b46f8f2545fa729fb3185e9f2e5e586302cf77582effe967df4d",
+  "static": {
+    "status": "passed",
+    "full_tasks": 80,
+    "CV_fits": 2400,
+    "full_refits": 160,
+    "generated_samples": 1600000,
+    "horizons": {
+      "500": {
+        "validation_sizes": [
+          167,
+          167,
+          166
+        ],
+        "cv_updates": [
+          4000,
+          4000,
+          4000
+        ],
+        "full_updates": 4000
+      },
+      "1000": {
+        "validation_sizes": [
+          334,
+          333,
+          333
+        ],
+        "cv_updates": [
+          6000,
+          6000,
+          6000
+        ],
+        "full_updates": 8000
+      },
+      "1500": {
+        "validation_sizes": [
+          500,
+          500,
+          500
+        ],
+        "cv_updates": [
+          8000,
+          8000,
+          8000
+        ],
+        "full_updates": 12000
+      },
+      "2000": {
+        "validation_sizes": [
+          667,
+          667,
+          666
+        ],
+        "cv_updates": [
+          12000,
+          12000,
+          12000
+        ],
+        "full_updates": 16000
+      }
+    },
+    "shell_syntax_ASCII_LF_checked": [
+      "run_local.sh",
+      "scc_env.sh",
+      "submit_scc.sh",
+      "full_array.qsub",
+      "prepare_reference.qsub",
+      "summarize.qsub"
+    ]
+  },
+  "sampler": {
+    "status": "passed",
+    "synthetic_only": true,
+    "device": "cpu",
+    "sampler_checks": [
+      {
+        "method": "cindes",
+        "bitwise_equal_original": true,
+        "maximum_absolute_difference": 0.0
+      },
+      {
+        "method": "dsm",
+        "bitwise_equal_original": true,
+        "maximum_absolute_difference": 0.0
+      }
+    ],
+    "partial_batch_size": 1,
+    "paired_reverse_rng_checks": 3,
+    "constant_classifier_exact_gaussian_score": true,
+    "CUDA_execution_tested": false
+  },
+  "runtime": {
+    "status": "passed",
+    "synthetic_metadata_only": true,
+    "CUDA_execution_tested": false,
+    "same_runtime_preserves_committed_bytes": true,
+    "hardware_change_archives_both_methods": true,
+    "fitted_models_preserved": true,
+    "interrupted_archive_journal_recovers": true,
+    "corrupt_shard_rejected": true,
+    "checkpoint_identity_change_rejected": true
+  }
+}

@@ -1,0 +1,31 @@
+% Requires \usepackage{amsmath,booktabs}.
+\begin{table}[htbp]
+\centering
+\caption{Computation times in seconds for the unbounded compositional experiment. Entries are the mean $\pm$ sample standard deviation over 20 paired replications. Boldface marks a lower mean computation time for CINDES than for DSM at the same sample size.}
+\label{tab:cindes_runtime_full}
+\small
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{rlcccc}
+\toprule
+$n$ & Method & \shortstack{Final refit\\(CPU)} & \shortstack{Generation\\(GPU)} & \shortstack{Refit $+$\\generation} & \shortstack{Cross-validation\\(summed fit times)} \\
+\midrule
+500 & CINDES & $\boldsymbol{0.53 \pm 0.24}$ & $64.87 \pm 10.12$ & $65.40 \pm 10.21$ & $96.23 \pm 16.29$ \\
+ & DSM & $1.76 \pm 0.54$ & $2.54 \pm 0.74$ & $4.30 \pm 1.12$ & $57.52 \pm 10.65$ \\
+\midrule
+1000 & CINDES & $\boldsymbol{1.28 \pm 0.46}$ & $67.30 \pm 11.60$ & $68.58 \pm 11.89$ & $138.83 \pm 23.29$ \\
+ & DSM & $4.22 \pm 1.40$ & $2.71 \pm 0.81$ & $6.93 \pm 2.13$ & $88.53 \pm 16.82$ \\
+\midrule
+1500 & CINDES & $\boldsymbol{2.18 \pm 0.70}$ & $58.80 \pm 18.31$ & $60.98 \pm 18.41$ & $168.39 \pm 24.04$ \\
+ & DSM & $6.61 \pm 1.60$ & $2.48 \pm 0.61$ & $9.10 \pm 1.96$ & $108.95 \pm 17.96$ \\
+\midrule
+2000 & CINDES & $\boldsymbol{3.15 \pm 0.91}$ & $61.05 \pm 5.52$ & $64.20 \pm 5.65$ & $215.34 \pm 20.93$ \\
+ & DSM & $8.97 \pm 1.53$ & $2.26 \pm 0.39$ & $11.22 \pm 1.67$ & $149.68 \pm 16.67$ \\
+\bottomrule
+\end{tabular}
+\par\smallskip
+\begin{minipage}{\textwidth}
+\footnotesize
+\textit{Notes.} Final refit is the recorded elapsed time for fitting the selected model on all $n$ observations, excluding cross-validation. Generation is the recorded elapsed time for producing 10,000 observations. Refit plus generation is calculated within each replication before computing its mean and standard deviation. The cross-validation column summarizes the recorded sum of the 15 individual fit times for each method, including validation. Up to four fits were run simultaneously on CPUs, so this is cumulative fitting time, rather than the elapsed duration of the parallel cross-validation stage. Both methods generated samples using the same GPU within each replication; GPU hardware varied across replications.
+\end{minipage}
+\end{table}

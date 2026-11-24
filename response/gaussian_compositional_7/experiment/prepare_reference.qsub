@@ -1,0 +1,12 @@
+#!/bin/bash -l
+#$ -cwd
+#$ -N cindes_ref
+#$ -j y
+#$ -pe omp 2
+#$ -l mem_per_core=4G
+#$ -l h_rt=01:00:00
+
+source ./scc_env.sh
+: "${CINDES_OUTPUT_ROOT:?Submit using submit_scc.sh to set the output directory.}"
+"${PYTHON_BIN:-python3}" -u prepare_reference.py --root "$CINDES_OUTPUT_ROOT" --profile full
+date

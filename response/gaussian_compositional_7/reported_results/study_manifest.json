@@ -1,0 +1,595 @@
+{
+  "config": {
+    "protocol": "compositional_scc_cv20_v1",
+    "profile": "full",
+    "d": 7,
+    "n_values": [
+      500,
+      1000,
+      1500,
+      2000
+    ],
+    "replications": 20,
+    "first_fit_seed": 1000,
+    "dgp": {
+      "d": 7,
+      "pot_seed": 11,
+      "amplitude": 1.5,
+      "kappa": 1.0
+    },
+    "methods": [
+      "cindes",
+      "dsm"
+    ],
+    "network": {
+      "width": 64,
+      "depth": 2,
+      "activation": "softplus",
+      "beta": 5.0,
+      "cindes": "scalar classifier",
+      "dsm": "Gaussian residual score",
+      "known_structure_used": false
+    },
+    "lambda_grid": [
+      0.0,
+      0.01,
+      0.1,
+      0.3,
+      1.0
+    ],
+    "cv_folds": 3,
+    "validation_checks": 100,
+    "max_positive_epochs": 2000,
+    "positive_batch": 256,
+    "fake_ratio": 2,
+    "normalizer_size": 65536,
+    "dsm_validation_draws": 8,
+    "retain_cindes_cv_states": true,
+    "training_device": "cpu",
+    "generation_device": "cuda",
+    "generation_batch": 128,
+    "n_gen": 10000,
+    "shard_size": 1000,
+    "R": 25.0,
+    "K": 5000,
+    "T": 3.0,
+    "delta": 0.001,
+    "M": 200,
+    "terminal_correction": "none",
+    "support_clipping": false,
+    "last_reverse_step_noise": true,
+    "sampler": "original antithetic moment score, Gaussian-reference exponential Euler",
+    "cuda_precision": "float32; TF32 disabled",
+    "reference_banks": 8,
+    "reference_bank_size": 131072,
+    "reference_seed_start": 97000000,
+    "baseline_reps": 20,
+    "baseline_seed_start": 97100000,
+    "tv_bins": 20,
+    "primary_metrics": [
+      "tv1",
+      "tv2",
+      "llgap"
+    ],
+    "diagnostic_metrics": [
+      "h_tv",
+      "h_w1"
+    ],
+    "histograms": "fixed standard-normal quantiles including infinite tails",
+    "tv2_pairs": "six pairs entering H, not asserted to be conditional-independence edges",
+    "llgap": "signed reference-minus-generated mean analytic target logpotential",
+    "seed_rules": {
+      "fit_seed": "first_fit_seed + task_id - 1",
+      "data": "fit_seed",
+      "fold_partition": "121000000 + fit_seed",
+      "cv_training": "100*fit_seed + fold",
+      "full_training": "fit_seed",
+      "reverse_argument": "98000000 + 10000*fit_seed + shard",
+      "actual_reverse": "reverse_argument + 999",
+      "particles": "99000000 + 10000*fit_seed + shard"
+    },
+    "selection": "joint lambda/common check minimizing validation-size-weighted mean fold loss; lower lambda then earlier check breaks exact ties",
+    "refit": "all n observations; common selected positive-epoch fraction; original full cosine horizon retained",
+    "fairness": "same observed data, CV partitions and positive-data exposure cap; selected durations and computation can differ"
+  },
+  "tasks": [
+    {
+      "task_id": 1,
+      "n": 500,
+      "replication": 1,
+      "seed": 1000
+    },
+    {
+      "task_id": 2,
+      "n": 500,
+      "replication": 2,
+      "seed": 1001
+    },
+    {
+      "task_id": 3,
+      "n": 500,
+      "replication": 3,
+      "seed": 1002
+    },
+    {
+      "task_id": 4,
+      "n": 500,
+      "replication": 4,
+      "seed": 1003
+    },
+    {
+      "task_id": 5,
+      "n": 500,
+      "replication": 5,
+      "seed": 1004
+    },
+    {
+      "task_id": 6,
+      "n": 500,
+      "replication": 6,
+      "seed": 1005
+    },
+    {
+      "task_id": 7,
+      "n": 500,
+      "replication": 7,
+      "seed": 1006
+    },
+    {
+      "task_id": 8,
+      "n": 500,
+      "replication": 8,
+      "seed": 1007
+    },
+    {
+      "task_id": 9,
+      "n": 500,
+      "replication": 9,
+      "seed": 1008
+    },
+    {
+      "task_id": 10,
+      "n": 500,
+      "replication": 10,
+      "seed": 1009
+    },
+    {
+      "task_id": 11,
+      "n": 500,
+      "replication": 11,
+      "seed": 1010
+    },
+    {
+      "task_id": 12,
+      "n": 500,
+      "replication": 12,
+      "seed": 1011
+    },
+    {
+      "task_id": 13,
+      "n": 500,
+      "replication": 13,
+      "seed": 1012
+    },
+    {
+      "task_id": 14,
+      "n": 500,
+      "replication": 14,
+      "seed": 1013
+    },
+    {
+      "task_id": 15,
+      "n": 500,
+      "replication": 15,
+      "seed": 1014
+    },
+    {
+      "task_id": 16,
+      "n": 500,
+      "replication": 16,
+      "seed": 1015
+    },
+    {
+      "task_id": 17,
+      "n": 500,
+      "replication": 17,
+      "seed": 1016
+    },
+    {
+      "task_id": 18,
+      "n": 500,
+      "replication": 18,
+      "seed": 1017
+    },
+    {
+      "task_id": 19,
+      "n": 500,
+      "replication": 19,
+      "seed": 1018
+    },
+    {
+      "task_id": 20,
+      "n": 500,
+      "replication": 20,
+      "seed": 1019
+    },
+    {
+      "task_id": 21,
+      "n": 1000,
+      "replication": 1,
+      "seed": 1020
+    },
+    {
+      "task_id": 22,
+      "n": 1000,
+      "replication": 2,
+      "seed": 1021
+    },
+    {
+      "task_id": 23,
+      "n": 1000,
+      "replication": 3,
+      "seed": 1022
+    },
+    {
+      "task_id": 24,
+      "n": 1000,
+      "replication": 4,
+      "seed": 1023
+    },
+    {
+      "task_id": 25,
+      "n": 1000,
+      "replication": 5,
+      "seed": 1024
+    },
+    {
+      "task_id": 26,
+      "n": 1000,
+      "replication": 6,
+      "seed": 1025
+    },
+    {
+      "task_id": 27,
+      "n": 1000,
+      "replication": 7,
+      "seed": 1026
+    },
+    {
+      "task_id": 28,
+      "n": 1000,
+      "replication": 8,
+      "seed": 1027
+    },
+    {
+      "task_id": 29,
+      "n": 1000,
+      "replication": 9,
+      "seed": 1028
+    },
+    {
+      "task_id": 30,
+      "n": 1000,
+      "replication": 10,
+      "seed": 1029
+    },
+    {
+      "task_id": 31,
+      "n": 1000,
+      "replication": 11,
+      "seed": 1030
+    },
+    {
+      "task_id": 32,
+      "n": 1000,
+      "replication": 12,
+      "seed": 1031
+    },
+    {
+      "task_id": 33,
+      "n": 1000,
+      "replication": 13,
+      "seed": 1032
+    },
+    {
+      "task_id": 34,
+      "n": 1000,
+      "replication": 14,
+      "seed": 1033
+    },
+    {
+      "task_id": 35,
+      "n": 1000,
+      "replication": 15,
+      "seed": 1034
+    },
+    {
+      "task_id": 36,
+      "n": 1000,
+      "replication": 16,
+      "seed": 1035
+    },
+    {
+      "task_id": 37,
+      "n": 1000,
+      "replication": 17,
+      "seed": 1036
+    },
+    {
+      "task_id": 38,
+      "n": 1000,
+      "replication": 18,
+      "seed": 1037
+    },
+    {
+      "task_id": 39,
+      "n": 1000,
+      "replication": 19,
+      "seed": 1038
+    },
+    {
+      "task_id": 40,
+      "n": 1000,
+      "replication": 20,
+      "seed": 1039
+    },
+    {
+      "task_id": 41,
+      "n": 1500,
+      "replication": 1,
+      "seed": 1040
+    },
+    {
+      "task_id": 42,
+      "n": 1500,
+      "replication": 2,
+      "seed": 1041
+    },
+    {
+      "task_id": 43,
+      "n": 1500,
+      "replication": 3,
+      "seed": 1042
+    },
+    {
+      "task_id": 44,
+      "n": 1500,
+      "replication": 4,
+      "seed": 1043
+    },
+    {
+      "task_id": 45,
+      "n": 1500,
+      "replication": 5,
+      "seed": 1044
+    },
+    {
+      "task_id": 46,
+      "n": 1500,
+      "replication": 6,
+      "seed": 1045
+    },
+    {
+      "task_id": 47,
+      "n": 1500,
+      "replication": 7,
+      "seed": 1046
+    },
+    {
+      "task_id": 48,
+      "n": 1500,
+      "replication": 8,
+      "seed": 1047
+    },
+    {
+      "task_id": 49,
+      "n": 1500,
+      "replication": 9,
+      "seed": 1048
+    },
+    {
+      "task_id": 50,
+      "n": 1500,
+      "replication": 10,
+      "seed": 1049
+    },
+    {
+      "task_id": 51,
+      "n": 1500,
+      "replication": 11,
+      "seed": 1050
+    },
+    {
+      "task_id": 52,
+      "n": 1500,
+      "replication": 12,
+      "seed": 1051
+    },
+    {
+      "task_id": 53,
+      "n": 1500,
+      "replication": 13,
+      "seed": 1052
+    },
+    {
+      "task_id": 54,
+      "n": 1500,
+      "replication": 14,
+      "seed": 1053
+    },
+    {
+      "task_id": 55,
+      "n": 1500,
+      "replication": 15,
+      "seed": 1054
+    },
+    {
+      "task_id": 56,
+      "n": 1500,
+      "replication": 16,
+      "seed": 1055
+    },
+    {
+      "task_id": 57,
+      "n": 1500,
+      "replication": 17,
+      "seed": 1056
+    },
+    {
+      "task_id": 58,
+      "n": 1500,
+      "replication": 18,
+      "seed": 1057
+    },
+    {
+      "task_id": 59,
+      "n": 1500,
+      "replication": 19,
+      "seed": 1058
+    },
+    {
+      "task_id": 60,
+      "n": 1500,
+      "replication": 20,
+      "seed": 1059
+    },
+    {
+      "task_id": 61,
+      "n": 2000,
+      "replication": 1,
+      "seed": 1060
+    },
+    {
+      "task_id": 62,
+      "n": 2000,
+      "replication": 2,
+      "seed": 1061
+    },
+    {
+      "task_id": 63,
+      "n": 2000,
+      "replication": 3,
+      "seed": 1062
+    },
+    {
+      "task_id": 64,
+      "n": 2000,
+      "replication": 4,
+      "seed": 1063
+    },
+    {
+      "task_id": 65,
+      "n": 2000,
+      "replication": 5,
+      "seed": 1064
+    },
+    {
+      "task_id": 66,
+      "n": 2000,
+      "replication": 6,
+      "seed": 1065
+    },
+    {
+      "task_id": 67,
+      "n": 2000,
+      "replication": 7,
+      "seed": 1066
+    },
+    {
+      "task_id": 68,
+      "n": 2000,
+      "replication": 8,
+      "seed": 1067
+    },
+    {
+      "task_id": 69,
+      "n": 2000,
+      "replication": 9,
+      "seed": 1068
+    },
+    {
+      "task_id": 70,
+      "n": 2000,
+      "replication": 10,
+      "seed": 1069
+    },
+    {
+      "task_id": 71,
+      "n": 2000,
+      "replication": 11,
+      "seed": 1070
+    },
+    {
+      "task_id": 72,
+      "n": 2000,
+      "replication": 12,
+      "seed": 1071
+    },
+    {
+      "task_id": 73,
+      "n": 2000,
+      "replication": 13,
+      "seed": 1072
+    },
+    {
+      "task_id": 74,
+      "n": 2000,
+      "replication": 14,
+      "seed": 1073
+    },
+    {
+      "task_id": 75,
+      "n": 2000,
+      "replication": 15,
+      "seed": 1074
+    },
+    {
+      "task_id": 76,
+      "n": 2000,
+      "replication": 16,
+      "seed": 1075
+    },
+    {
+      "task_id": 77,
+      "n": 2000,
+      "replication": 17,
+      "seed": 1076
+    },
+    {
+      "task_id": 78,
+      "n": 2000,
+      "replication": 18,
+      "seed": 1077
+    },
+    {
+      "task_id": 79,
+      "n": 2000,
+      "replication": 19,
+      "seed": 1078
+    },
+    {
+      "task_id": 80,
+      "n": 2000,
+      "replication": 20,
+      "seed": 1079
+    }
+  ],
+  "source_sha256": {
+    "evaluate.py": "036b249e522ae932908b36e9c8d4d4fd2e724c6c74edcb087f279b3d99ae1db5",
+    "generation.py": "050117899fdb0f612963816f2fc256acfccd6c822a357acca660f54d5161cc2b",
+    "make_return_bundle.py": "f111a74f1eba3031e760a38629d6b42fa667ac52e88c7ce6282feacd5437df1c",
+    "metrics.py": "32b2dac79f0956c53564487a29668585d65259059377fc30c570fa581ea58b86",
+    "prepare_reference.py": "62b2391c3bbf40515484cb4825a762048624960ab134828529f0c77a24fc46b0",
+    "qa_checks.py": "ef41ef696d41b46f8f2545fa729fb3185e9f2e5e586302cf77582effe967df4d",
+    "run_task.py": "73116f1d270971e910eb5570f4199926d5c500407bdd628b3638e73b349672e1",
+    "study.py": "701a53d9e51c6b344bd8f38d373d92b2cfc0b01b91cfcbb466aabb192dd7f444",
+    "summarize_results.py": "e01847dc1ed40818375a1bbff25f8ead3e2d3705855e4621dab5be30cd0c2502",
+    "source/balanced_training.py": "0b95d9a68ebaaf348c154411f4d1bb01283337c44a3f8ea0b88bf46780f822dc",
+    "source/compositional_dgp.py": "2f803bbb95590926fc15774afa22d1764936af7c8e83aceb4ea8eeab13486b5f",
+    "source/l1_training.py": "5bd08c72d6056d8fdca9229404a12a7efe5e45cef90724121f6b701502bedded",
+    "source/subgaussian_methods.py": "e65c4584e965e157ed6f7e8d1044abba8560460f92289b73e43d16e6ec4ad5cd",
+    "source/training_loop.py": "f64f30da01548ee5f302c4c1b9928119219b940932e4a291129a15f28b07acc3"
+  },
+  "study_id": "1832ac1cbf9358b8642b2996b73f513e92d088dc5cada686f03e74c7edabee83",
+  "created_at_utc": "2026-11-22T05:46:13.768572+00:00"
+}

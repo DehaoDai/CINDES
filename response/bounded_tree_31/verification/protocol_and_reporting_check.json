@@ -1,0 +1,24 @@
+{
+  "status": "passed",
+  "scope": "Protocol comparison and synthetic reporting checks; no model training or SCC submission",
+  "checks": [
+    "Historical scientific configuration and original SCC source hashes match",
+    "All 80 sample-size/seed assignments and separate output roots match",
+    "160 synthetic records aggregate to four sizes with correct mean and sample SD",
+    "A validated completed pair is reused before importing the GPU environment",
+    "The strict results bundle includes validated records, tables, and scheduler provenance",
+    "Strict aggregation rejects missing method results and duplicate records"
+  ],
+  "original_scc_source_sha256": {
+    "cindes_vs_dsm_mrf.py": "2de2546af8422b2cf5b6c28bcd6788b286ed6ec36bec31ef92ff0bc77743ddae",
+    "cindes_vs_dsm_tree.py": "d39e6b1f72cfabf8daa79b796b043a17e0819aa21af2c8a9d9478c0de38797d1",
+    "tree_mrf.py": "2574d1d270cdc5ea8dd7c342ed7cb4d6a738f7edde4e71e646eeb680fc4ea450"
+  },
+  "reporting_source_sha256": {
+    "study_config.py": "1018ea6ac5253d46a120b8300ab264a36fb0e8487fc4398cb0dc375b81ec38c5",
+    "run_experiment.py": "8b5bd0e966f73217840fd63049c53081e58bab3416dabbd7511670a8a2f62218",
+    "run_original.py": "40d7e8a7bcd9e1d533bafaddb2d638954b1a9724f93fe1d55c02dd42ebd03aed",
+    "summarize_results.py": "37b7aba8214db6b3a1abd7e541715dba19953cb8127fe7b598e81021e06f5e32",
+    "make_results_bundle.py": "b9bd14d9614281168552713a106b0de9d146c670493bf2ff1c9e53350b0385e5"
+  }
+}

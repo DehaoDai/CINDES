@@ -1,0 +1,24 @@
+#!/bin/bash -l
+# Submit through submit_scc.sh; it saves a copy with the requested task range.
+#$ -cwd
+#$ -N cindes_bsm
+#$ -j y
+#$ -pe omp 4
+#$ -l gpus=1
+#$ -l gpu_c=8.0
+#$ -l gpu_memory=16G
+#$ -l h_rt=12:00:00
+#$ -t 1-80
+#$ -tc 2
+set -eo pipefail
+: "${SGE_O_WORKDIR:?Submit from the package directory.}"
+cd "$SGE_O_WORKDIR"
+output_root="${1:?The submission script must supply the output directory.}"
+environment_script="${2:--}"
+python_bin="${3:-python3}"
+export CINDES_CPU_THREADS="${4:-${NSLOTS:-4}}"
+if [[ "$environment_script" == - ]]; then unset CINDES_ENV_SCRIPT; else export CINDES_ENV_SCRIPT="$environment_script"; fi
+source ./scc_env.sh
+: "${SGE_TASK_ID:?Submit as an array job.}"
+"$python_bin" -u run_experiment.py --profile full --root "$output_root" \
+    --task-id "$SGE_TASK_ID" --require-cuda

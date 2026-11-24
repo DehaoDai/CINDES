@@ -22,3 +22,9 @@ reference/
 *.log
 *.pt
 *.pth
+response/bounded_tree_31/outputs/
+response/gaussian_compositional_7/outputs/
+!response/bounded_tree_31/**/*.csv
+!response/bounded_tree_31/**/*.jsonl
+!response/gaussian_compositional_7/**/*.csv
+!response/gaussian_compositional_7/reported_results/reference/

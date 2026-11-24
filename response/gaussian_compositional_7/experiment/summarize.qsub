@@ -1,0 +1,14 @@
+#!/bin/bash -l
+#$ -cwd
+#$ -N cindes_tables
+#$ -j y
+#$ -pe omp 2
+#$ -l mem_per_core=4G
+#$ -l h_rt=01:00:00
+
+source ./scc_env.sh
+: "${CINDES_OUTPUT_ROOT:?Submit using submit_scc.sh to set the output directory.}"
+"${PYTHON_BIN:-python3}" -u summarize_results.py --root "$CINDES_OUTPUT_ROOT" --profile full
+"${PYTHON_BIN:-python3}" -u make_return_bundle.py --root "$CINDES_OUTPUT_ROOT" --profile full
+"${PYTHON_BIN:-python3}" -u ../reproduce_tables.py --root "$CINDES_OUTPUT_ROOT" --output "$CINDES_OUTPUT_ROOT/journal_tables"
+date

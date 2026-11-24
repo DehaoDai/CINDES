@@ -1,0 +1,39 @@
+{
+  "status": "passed",
+  "scope": "Reduced CPU end-to-end execution of the unchanged scientific code through the journal local wrapper; not a rerun of the full scientific study.",
+  "command": "bash experiment/run_local.sh smoke <temporary-output-directory>",
+  "environment": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "scipy": "1.17.0",
+    "torch": "2.15.0+cpu",
+    "system": "Linux",
+    "cuda_available": false
+  },
+  "profile": "smoke",
+  "data_sample_size": 500,
+  "paired_replications": 1,
+  "method_results": 2,
+  "n_gen_per_method": 64,
+  "reference_observations": 4096,
+  "cv_fits": 12,
+  "cv_workers": 2,
+  "completed_stages": [
+    "reference_generation",
+    "data_generation",
+    "cross_validation",
+    "selection",
+    "full_data_refits",
+    "sampler_equivalence_preflight",
+    "sample_generation",
+    "metric_evaluation",
+    "strict_summary",
+    "compact_results_archive"
+  ],
+  "source_hashes_match_reported_study": true,
+  "run_complete_sha256": "f6eacb4536800427d89b59cf1b52a7a9eddb331b5e0b239b1cede1f42a89619e",
+  "sampler_verification_status": "passed",
+  "summary_status": "complete",
+  "full_study_executed": false,
+  "real_cluster_jobs_submitted": false
+}

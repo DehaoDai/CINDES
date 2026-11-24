@@ -1,0 +1,24 @@
+% Requires \usepackage{booktabs,amsmath}. The font matches the accuracy table.
+\begin{table}[htbp]
+\centering
+\small
+\caption{Computation time for the bounded binary-tree experiment, in seconds. Mean $\pm$ sample standard deviation over 20 paired replications at each sample size. Each time includes model training and generation of the samples used for evaluation. Data sampling and metric evaluation are excluded.}
+\label{tab:cindes_bounded_runtime}
+\begin{tabular}{rlc}
+\toprule
+$n$ & Method & Training and generation time (s) \\
+\midrule
+500 & CINDES & $177.96 \pm 31.58$ \\
+ & DSM & $62.64 \pm 12.02$ \\
+\addlinespace
+1000 & CINDES & $193.28 \pm 51.52$ \\
+ & DSM & $67.76 \pm 13.02$ \\
+\addlinespace
+1500 & CINDES & $206.58 \pm 41.64$ \\
+ & DSM & $73.17 \pm 9.82$ \\
+\addlinespace
+2000 & CINDES & $200.02 \pm 61.09$ \\
+ & DSM & $67.73 \pm 12.34$ \\
+\bottomrule
+\end{tabular}
+\end{table}

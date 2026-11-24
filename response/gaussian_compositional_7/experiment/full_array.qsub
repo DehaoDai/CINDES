@@ -1,0 +1,25 @@
+#!/bin/bash -l
+# One task = one sample size / replication, running both methods.
+#$ -cwd
+#$ -N cindes_full
+#$ -j y
+#$ -pe omp 4
+#$ -l mem_per_core=4G
+#$ -l gpus=1
+#$ -l gpu_c=8.0
+#$ -l gpu_memory=16G
+#$ -l h_rt=12:00:00
+#$ -t 1-80
+#$ -tc 2
+
+source ./scc_env.sh
+: "${SGE_TASK_ID:?Submit as an array job.}"
+: "${NSLOTS:?The array requires CPU slots.}"
+: "${CINDES_OUTPUT_ROOT:?Submit using submit_scc.sh to set the output directory.}"
+"${PYTHON_BIN:-python3}" -u run_task.py \
+    --root "$CINDES_OUTPUT_ROOT" \
+    --profile full \
+    --task-id "$SGE_TASK_ID" \
+    --cv-workers "$NSLOTS" \
+    --device cuda
+date

@@ -1,0 +1,7 @@
+# Numerical checks for the reported tables
+
+`reported_statistics.json` contains the full-precision mean, sample standard deviation, and standard error for all 72 table entries: five accuracy criteria and four timing criteria for each of the eight sample-size/method combinations. These values were frozen from the preceding independent audit of the source results. They are used only when `reproduce_tables.py --check` is requested; they are not inputs to the table calculations.
+
+`original_accuracy_summary.csv` and `original_timing_summary.csv` are unchanged copies of the corresponding summaries produced by the experiment. The timing CSV covers final refitting and generation. The combined refit-plus-generation and summed-cross-validation columns in `reported_statistics.json` were calculated from the individual run records, with refit and generation times added within each replication before computing the standard deviation.
+
+The check compares all 216 means, standard deviations, and standard errors with relative and absolute tolerances of `1e-12`. It also checks exact agreement of all 144 displayed means and standard deviations after rounding to four decimal places for accuracy and two decimal places for runtime. A fresh experimental rerun should use `--root` without `--check`, because its measured runtimes will differ and numerical results can vary with the software and hardware environment.
