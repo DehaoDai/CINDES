@@ -1,0 +1,384 @@
+% Requires \usepackage{amsmath,booktabs} in the manuscript preamble.
+\section{Additional comparisons with denoising score matching}
+\label{sec:supp_dsm_experiments}
+
+We compare CINDES with denoising score matching (DSM) in three settings: a
+bounded binary-tree density in dimension 31 and two unbounded compositional
+densities in dimension 7. At each sample size
+$n\in\{500,1000,1500,2000\}$, the methods use the same training data in each
+of 20 paired replications. All tables report the mean $\pm$ sample standard
+deviation across replications. The experiments assess different aspects of
+generation: the binary tree has a log-density that factors into unary and
+pairwise potentials, whereas the two compositional densities use a bounded
+nonlinear tilt of a known reference density. The six coordinate pairs in the
+compositional examples define the statistic used for evaluation; because of
+the outer nonlinear transformation, they do not assert a Markov factorization.
+
+\subsection{Bounded binary-tree density}
+\label{sec:supp_bounded_tree}
+
+\paragraph{Target distribution and data.}
+Let $d=31$ and $\pi(i)=\lfloor i/2\rfloor$. On $[0,1]^d$, define
+\begin{align}
+ p_0(y)&=Z^{-1}\exp\{\ell_0(y)\},\qquad
+ \ell_0(y)=\sum_{j=1}^{d}\phi_j(y_j)
+             +\sum_{i=2}^{d}\psi_i(y_{\pi(i)},y_i),\label{eq:supp_tree_density}\\
+ \phi_j(u)&=c_j\sin(2\pi u+\varphi_j),\qquad
+ \psi_i(u,v)=a_i s_i\cos(2\pi(u-v))
+              +b_i\sin(2\pi u)\sin(2\pi v).\nonumber
+\end{align}
+The coefficients are drawn once, using seed 11, with
+\begin{equation*}
+\begin{aligned}
+a_i&\sim\operatorname{Unif}(0.385,0.715), &
+b_i&\sim\operatorname{Unif}(0.22,0.44),\\
+c_j&\sim\operatorname{Unif}(0.15,0.45), &
+\varphi_j&\sim\operatorname{Unif}(0,2\pi).
+\end{aligned}
+\end{equation*}
+The signs $s_i\in\{-1,1\}$ are independent and equiprobable. All
+coefficients are held fixed across replications. The tree has maximal
+clique size two, although neither fitted method is given its edges.
+
+Training and evaluation observations are sampled from a midpoint-grid
+approximation $P_G$ to $p_0$, with $G=200$ intervals per coordinate. Each
+cell receives mass proportional to the density at its midpoint. Tree
+message passing supplies the root marginal and child conditionals for
+sampling interval indices; coordinates are then sampled uniformly within
+their selected intervals. An independent reference sample of 20,000
+observations is shared across methods and replications.
+
+\paragraph{Estimation and generation.}
+Both methods use fully connected networks with three hidden layers of 128
+ReLU units. CINDES fits a scalar density-ratio classifier against the uniform
+reference distribution on $[0,1]^{31}$, with $2n$ reference observations and
+classifier-logit bound $R=25$. Its diffused score is estimated using
+$K=5000$ particles and support-adapted truncated-normal importance
+sampling. DSM directly fits a time-conditioned, 31-output score network.
+Both are trained with Adam (batch size 256, initial learning rate $10^{-3}$,
+weight decay $10^{-5}$, and cosine learning-rate schedule). CINDES uses
+approximately 20,000 optimization updates and DSM approximately 60,000.
+Each fit generates 10,000 observations using the same reverse-time scheme
+with $T=3$, $\delta=0.001$, and $M=200$ steps; final coordinates are
+projected onto $[0,1]^{31}$.
+
+\paragraph{Evaluation and results.}
+For each coordinate, TV$_1$ is the histogram total variation discrepancy
+between generated and reference samples, averaged over all 31 coordinates.
+TV$_2$ averages the corresponding 20-by-20-bin discrepancy over the 30
+parent--child pairs. Both use 20 equal-width bins per coordinate. These
+statistics evaluate selected marginals, rather than full-joint total
+variation. We also report the signed log-potential gap
+\begin{equation}
+ \mathrm{LLgap}
+ =\frac{1}{N_{\mathrm{ref}}}\sum_{r=1}^{N_{\mathrm{ref}}}
+   \ell_0(Y_r^{\mathrm{ref}})
+  -\frac{1}{N_{\mathrm{gen}}}\sum_{r=1}^{N_{\mathrm{gen}}}
+   \ell_0(\widetilde Y_r),
+ \label{eq:supp_llgap}
+\end{equation}
+with $N_{\mathrm{ref}}=20{,}000$ and $N_{\mathrm{gen}}=10{,}000$ here.
+The normalizing constant cancels; LLgap is a signed diagnostic of the mean
+target log density, not a divergence. Table~\ref{tab:cindes_bounded_tree}
+shows smaller mean TV$_1$, TV$_2$, and LLgap for CINDES at all four sample
+sizes. At $n=2000$, the means are $0.0772$ versus $0.1325$ for TV$_1$,
+$0.1954$ versus $0.2435$ for TV$_2$, and $3.8222$ versus $4.5416$ for
+LLgap (CINDES versus DSM).
+
+% Bounded accuracy table: exact reported values.
+% Requires \usepackage{booktabs,amsmath}. Generated from validated per-replication results.
+\begin{table}[htbp]
+\centering
+\small
+\caption{Bounded binary-tree experiment. Mean $\pm$ sample standard deviation over 20 paired replications at each sample size. TV$_1$ and TV$_2$ are average histogram total variation errors for coordinate and parent--child marginals. The log-likelihood gap is signed. Boldface marks a smaller CINDES mean within a sample size and metric; it does not indicate a significance test.}
+\label{tab:cindes_bounded_tree}
+\begin{tabular}{rlccc}
+\toprule
+$n$ & Method & TV$_1$ & TV$_2$ & Log-likelihood gap \\
+\midrule
+500 & CINDES & $\boldsymbol{0.1063 \pm 0.0212}$ & $\boldsymbol{0.2238 \pm 0.0221}$ & $\boldsymbol{4.1978 \pm 0.2829}$ \\
+ & DSM & $0.1590 \pm 0.0019$ & $0.2693 \pm 0.0026$ & $4.4031 \pm 0.1172$ \\
+\addlinespace
+1000 & CINDES & $\boldsymbol{0.0889 \pm 0.0176}$ & $\boldsymbol{0.2072 \pm 0.0175}$ & $\boldsymbol{4.2659 \pm 0.8818}$ \\
+ & DSM & $0.1398 \pm 0.0020$ & $0.2506 \pm 0.0024$ & $4.5587 \pm 0.0946$ \\
+\addlinespace
+1500 & CINDES & $\boldsymbol{0.0815 \pm 0.0069}$ & $\boldsymbol{0.1988 \pm 0.0071}$ & $\boldsymbol{3.9105 \pm 0.1564}$ \\
+ & DSM & $0.1342 \pm 0.0016$ & $0.2454 \pm 0.0019$ & $4.5615 \pm 0.0951$ \\
+\addlinespace
+2000 & CINDES & $\boldsymbol{0.0772 \pm 0.0086}$ & $\boldsymbol{0.1954 \pm 0.0074}$ & $\boldsymbol{3.8222 \pm 0.1444}$ \\
+ & DSM & $0.1325 \pm 0.0026$ & $0.2435 \pm 0.0027$ & $4.5416 \pm 0.0919$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Computation time.}
+The recorded time includes training and generation, but excludes data
+simulation and metric evaluation. At $n=2000$, the mean time is $200.02$
+seconds for CINDES and $67.73$ seconds for DSM. CINDES therefore has
+higher combined cost in this experiment, driven by repeated density-network
+evaluations for the Monte Carlo score during generation.
+
+% Bounded runtime table: exact reported values.
+% Requires \usepackage{booktabs,amsmath}. The font matches the accuracy table.
+\begin{table}[htbp]
+\centering
+\small
+\caption{Computation time for the bounded binary-tree experiment, in seconds. Mean $\pm$ sample standard deviation over 20 paired replications at each sample size. Each time includes model training and generation of the samples used for evaluation. Data sampling and metric evaluation are excluded.}
+\label{tab:cindes_bounded_runtime}
+\begin{tabular}{rlc}
+\toprule
+$n$ & Method & Training and generation time (s) \\
+\midrule
+500 & CINDES & $177.96 \pm 31.58$ \\
+ & DSM & $62.64 \pm 12.02$ \\
+\addlinespace
+1000 & CINDES & $193.28 \pm 51.52$ \\
+ & DSM & $67.76 \pm 13.02$ \\
+\addlinespace
+1500 & CINDES & $206.58 \pm 41.64$ \\
+ & DSM & $73.17 \pm 9.82$ \\
+\addlinespace
+2000 & CINDES & $200.02 \pm 61.09$ \\
+ & DSM & $67.73 \pm 12.34$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Unbounded compositional density with sub-Gaussian tails}
+\label{sec:supp_gaussian_composition}
+
+\paragraph{Target distribution and data.}
+Let $\phi_7$ denote the standard Gaussian density on $\mathbb R^7$, and set
+\begin{align}
+ p_g(x)&=Z_g^{-1}\phi_7(x)\exp\{1.5\tanh H_g(x)\},
+ \label{eq:supp_gaussian_density}\\
+ H_g(x)&=\frac{-u_4u_2-u_4u_5-u_2u_6-u_2u_3+u_5u_1+u_5u_7}
+                  {v\sqrt 6},\qquad
+ u_j=\tanh(x_j),\qquad
+ v=\mathbb E_{Z\sim N(0,1)}[\tanh^2 Z].\nonumber
+\end{align}
+The bounded tilt gives this distribution full support on $\mathbb R^7$
+and sub-Gaussian tails. Training observations are drawn by Gaussian-proposal
+rejection sampling. The common, independent target-reference sample has
+1,048,576 observations.
+
+\paragraph{Estimation and generation.}
+Both methods use two hidden layers of 64 Softplus units. Three-fold
+cross-validation selects the $\ell_1$ penalty from
+$\{0,0.01,0.1,0.3,1\}$ and a training duration capped at 2,000 epochs;
+each selected model is refitted on all $n$ observations. CINDES uses the
+Gaussian reference $q=\phi_7$, logit bound $R=25$, and $K=5000$
+antithetic particles per score evaluation. DSM fits the residual score
+$s_\theta(x,t)=-x+g_\theta(x,t)$. Neither estimator is supplied with
+$H_g$ or its six generating pairs. Both generate 10,000 observations per
+replication with $T=3$, $\delta=0.001$, and $M=200$ reverse steps, without
+support clipping.
+
+\paragraph{Evaluation and results.}
+TV$_1$ averages coordinatewise histogram total variation discrepancies;
+TV$_2$ averages them over the six pairs in $H_g$. Each coordinate uses 20
+standard-Gaussian-quantile bins. The $H$-TV statistic compares generated
+and reference histograms of $H_g(X)$ using 20 standard-Gaussian-quantile
+bins, while $H$-$W_1$ is the one-dimensional Wasserstein-1 distance between
+the unbinned empirical distributions of $H_g(X)$. LLgap is defined as in
+\eqref{eq:supp_llgap}, with $\ell_0(x)=\log\phi_7(x)+1.5\tanh H_g(x)$.
+Table~\ref{tab:cindes_accuracy_full} shows similar mean TV$_1$ values
+and lower mean TV$_2$, $H$-TV, and $H$-$W_1$ values for CINDES at every
+sample size. At $n=2000$, $H$-TV is $0.0633$ versus $0.0927$ and
+$H$-$W_1$ is $0.0786$ versus $0.1294$ (CINDES versus DSM).
+
+% Sub-Gaussian accuracy table: exact reported values.
+% Requires \usepackage{amsmath,booktabs}.
+\begin{table}[htbp]
+\centering
+\caption{Comparison of CINDES and DSM for the unbounded compositional distribution in dimension $d=7$. Entries are the mean $\pm$ sample standard deviation over 20 paired replications, with 10,000 generated observations per fitted model. Boldface marks a lower mean discrepancy for CINDES (a mean closer to zero for the signed LLgap). Boldface does not indicate statistical significance.}
+\label{tab:cindes_accuracy_full}
+\small
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{rlccccc}
+\toprule
+$n$ & Method & TV1 & TV2 & LLgap & $H$-TV & $H$-$W_1$ \\
+\midrule
+500 & CINDES & $\boldsymbol{0.0310 \pm 0.0050}$ & $\boldsymbol{0.0982 \pm 0.0048}$ & $\boldsymbol{0.1783 \pm 0.0786}$ & $\boldsymbol{0.0982 \pm 0.0168}$ & $\boldsymbol{0.1367 \pm 0.0333}$ \\
+ & DSM & $0.0323 \pm 0.0041$ & $0.1042 \pm 0.0049$ & $0.1984 \pm 0.1231$ & $0.1331 \pm 0.0169$ & $0.2098 \pm 0.0398$ \\
+\midrule
+1000 & CINDES & $\boldsymbol{0.0255 \pm 0.0026}$ & $\boldsymbol{0.0910 \pm 0.0026}$ & $\boldsymbol{0.1711 \pm 0.0728}$ & $\boldsymbol{0.0780 \pm 0.0126}$ & $\boldsymbol{0.1007 \pm 0.0193}$ \\
+ & DSM & $0.0265 \pm 0.0031$ & $0.0948 \pm 0.0029$ & $0.1878 \pm 0.0660$ & $0.1108 \pm 0.0117$ & $0.1582 \pm 0.0226$ \\
+\midrule
+1500 & CINDES & $\boldsymbol{0.0232 \pm 0.0013}$ & $\boldsymbol{0.0875 \pm 0.0018}$ & $\boldsymbol{0.1310 \pm 0.0547}$ & $\boldsymbol{0.0635 \pm 0.0118}$ & $\boldsymbol{0.0804 \pm 0.0188}$ \\
+ & DSM & $0.0238 \pm 0.0027$ & $0.0913 \pm 0.0026$ & $0.1552 \pm 0.0493$ & $0.0961 \pm 0.0106$ & $0.1363 \pm 0.0217$ \\
+\midrule
+2000 & CINDES & $\boldsymbol{0.0217 \pm 0.0015}$ & $\boldsymbol{0.0863 \pm 0.0015}$ & $\boldsymbol{0.1247 \pm 0.0525}$ & $\boldsymbol{0.0633 \pm 0.0086}$ & $\boldsymbol{0.0786 \pm 0.0146}$ \\
+ & DSM & $0.0221 \pm 0.0027$ & $0.0892 \pm 0.0020$ & $0.1539 \pm 0.0567$ & $0.0927 \pm 0.0078$ & $0.1294 \pm 0.0177$ \\
+\bottomrule
+\end{tabular}
+\par\smallskip
+\begin{minipage}{\textwidth}
+\footnotesize
+\textit{Notes.} TV1 and TV2 are histogram total variation discrepancies averaged over the seven coordinates and the six generating pairs, respectively. $H$-TV is the histogram total variation discrepancy between the generated and target-reference distributions of $H(X)$, and $H$-$W_1$ is their one-dimensional Wasserstein-1 distance computed from the unbinned $H$-values. LLgap is the signed reference-minus-generated mean log-potential gap, not a divergence. The common independent target-reference sample contains 1,048,576 observations.
+\end{minipage}
+\end{table}
+
+\paragraph{Computation time.}
+At $n=2000$, CINDES and DSM take mean times of $3.15$ and $8.97$
+seconds for the final refit, and $61.05$ and $2.26$ seconds to generate
+10,000 observations, respectively. The corresponding refit-plus-generation
+times are $64.20$ and $11.22$ seconds. The summed cross-validation fit
+times are $215.34$ and $149.68$ seconds; this last quantity adds fit times
+that may overlap when cross-validation fits run concurrently and is not
+the elapsed duration of that stage.
+
+% Sub-Gaussian runtime table: exact reported values.
+% Requires \usepackage{amsmath,booktabs}.
+\begin{table}[htbp]
+\centering
+\caption{Computation times in seconds for the unbounded compositional experiment. Entries are the mean $\pm$ sample standard deviation over 20 paired replications. Boldface marks a lower mean computation time for CINDES than for DSM at the same sample size.}
+\label{tab:cindes_runtime_full}
+\small
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{rlcccc}
+\toprule
+$n$ & Method & \shortstack{Final refit\\(CPU)} & \shortstack{Generation\\(GPU)} & \shortstack{Refit $+$\\generation} & \shortstack{Cross-validation\\(summed fit times)} \\
+\midrule
+500 & CINDES & $\boldsymbol{0.53 \pm 0.24}$ & $64.87 \pm 10.12$ & $65.40 \pm 10.21$ & $96.23 \pm 16.29$ \\
+ & DSM & $1.76 \pm 0.54$ & $2.54 \pm 0.74$ & $4.30 \pm 1.12$ & $57.52 \pm 10.65$ \\
+\midrule
+1000 & CINDES & $\boldsymbol{1.28 \pm 0.46}$ & $67.30 \pm 11.60$ & $68.58 \pm 11.89$ & $138.83 \pm 23.29$ \\
+ & DSM & $4.22 \pm 1.40$ & $2.71 \pm 0.81$ & $6.93 \pm 2.13$ & $88.53 \pm 16.82$ \\
+\midrule
+1500 & CINDES & $\boldsymbol{2.18 \pm 0.70}$ & $58.80 \pm 18.31$ & $60.98 \pm 18.41$ & $168.39 \pm 24.04$ \\
+ & DSM & $6.61 \pm 1.60$ & $2.48 \pm 0.61$ & $9.10 \pm 1.96$ & $108.95 \pm 17.96$ \\
+\midrule
+2000 & CINDES & $\boldsymbol{3.15 \pm 0.91}$ & $61.05 \pm 5.52$ & $64.20 \pm 5.65$ & $215.34 \pm 20.93$ \\
+ & DSM & $8.97 \pm 1.53$ & $2.26 \pm 0.39$ & $11.22 \pm 1.67$ & $149.68 \pm 16.67$ \\
+\bottomrule
+\end{tabular}
+\par\smallskip
+\begin{minipage}{\textwidth}
+\footnotesize
+\textit{Notes.} Final refit is the recorded elapsed time for fitting the selected model on all $n$ observations, excluding cross-validation. Generation is the recorded elapsed time for producing 10,000 observations. Refit plus generation is calculated within each replication before computing its mean and standard deviation. The cross-validation column summarizes the recorded sum of the 15 individual fit times for each method, including validation. Up to four fits were run simultaneously on CPUs, so this is cumulative fitting time, rather than the elapsed duration of the parallel cross-validation stage. Both methods generated samples using the same GPU within each replication; GPU hardware varied across replications.
+\end{minipage}
+\end{table}
+
+\subsection{Positive compositional density with exponential tails}
+\label{sec:supp_exponential_composition}
+
+\paragraph{Target distribution and data.}
+On $(0,\infty)^7$, let
+\begin{align}
+ p_e(y)&=Z_e^{-1}q_Y(y)\exp\{1.5\tanh H_e(y)\},\qquad
+ q_Y(y)=\exp\Bigl(-\sum_{j=1}^7 y_j\Bigr),
+ \label{eq:supp_exponential_density}\\
+ H_e(y)&=\frac{3}{\sqrt 6}
+  \bigl(-u_4u_2-u_4u_5-u_2u_6-u_2u_3+u_5u_1+u_5u_7\bigr),
+ \qquad u_j=1-2e^{-y_j}.\nonumber
+\end{align}
+Here $q_Y$ is the product of seven $\operatorname{Exp}(1)$ densities. The
+bounded tilt introduces nonlinear dependence and preserves exponential
+tails. Training and target-reference observations are drawn by proposing
+from $q_Y$ and accepting with probability
+$\exp\{1.5\tanh H_e(y)-1.5\}$. The common target-reference sample has
+524,288 observations.
+
+\paragraph{Estimation and generation.}
+Both methods work in $z=\log y$, with known reference density
+\begin{equation}
+ q_Z(z)=\exp\left\{\sum_{j=1}^7(z_j-e^{z_j})\right\},
+ \qquad z\in\mathbb R^7.
+ \label{eq:supp_log_exponential_reference}
+\end{equation}
+They use networks with two hidden layers of 64 Softplus units. CINDES fits
+the density ratio to $q_Z$ with logit
+$f_\theta(z)=b-\operatorname{softplus}(a_\theta(z))$, where $b$ is learned.
+DSM fits a time-dependent residual to the known diffused-reference score,
+$s_\theta(z,t)=\nabla_z\log q_{Z,t}(z)+g_\theta(z,t)$. Neither method is
+given $H_e$ or its generating pairs. For each method, three-fold
+cross-validation selects the $\ell_1$ penalty from
+$\{0,0.01,0.1,0.3,1,3\}$ and the training duration, capped at 2,000
+epochs; the selected model is refitted on all observations. Both use Adam
+with batch size 256 and initial learning rate $10^{-3}$.
+
+The methods share an exponential-Euler reverse discretization with $T=3$,
+$\delta=0.001$, and $M=400$ steps, initialized from the forward-diffused
+reference at time $T$. CINDES uses $K=1000$ antithetic particles per score
+evaluation, with a reference-score control variate. Each fitted model
+generates 5,000 samples in log coordinates, which are transformed back by
+$\widetilde Y=\exp(\widetilde Z)$.
+
+\paragraph{Evaluation and results.}
+TV$_1$ and TV$_2$ average histogram total variation discrepancies over the
+seven coordinates and six generating pairs, using 20
+$\operatorname{Exp}(1)$-quantile bins per coordinate, including an unbounded
+final bin. We also compare the generated and reference distributions of
+$H_e(Y)$ by $H$-TV, using 20 standard-Gaussian-quantile bins, and by the
+unbinned empirical $H$-$W_1$. LLgap uses the signed reference-minus-generated
+mean of $\ell_0(y)=-\sum_j y_j+1.5\tanh H_e(y)$. Table~\ref{tab:cindes_exponential_accuracy}
+shows lower mean TV$_2$, $H$-TV, and $H$-$W_1$ for CINDES at all four sample
+sizes. At $n=2000$, $H$-TV is $0.0573$ versus $0.0824$ and $H$-$W_1$
+is $0.0676$ versus $0.1100$ (CINDES versus DSM). The mean TV$_1$
+values are close, with DSM slightly lower at $n=2000$ ($0.0279$ versus
+$0.0283$). The mean LLgap is closer to zero for CINDES at each size.
+
+% Exponential accuracy table: exact reported values.
+\begin{table}[htbp]
+\centering
+\small
+\setlength{\tabcolsep}{4pt}
+\caption{Accuracy comparison for the exponential experiment using $20$ paired replications at each sample size ($80$ pairs in total). Entries are mean $\pm$ sample standard deviation. Boldface identifies the smaller mean for TV1, TV2, $H$-TV and $H$-$W_1$; for the signed LLgap, it identifies the mean closer to zero. These comparisons are descriptive.}
+\label{tab:cindes_exponential_accuracy}
+\begin{tabular}{rlccccc}
+\toprule
+$n$ & Method & TV1 & TV2 & LLgap (signed) & $H$-TV & $H$-$W_1$ \\
+\midrule
+500 & CINDES & $\mathbf{0.0352 \pm 0.0034}$ & $\mathbf{0.1251 \pm 0.0033}$ & $\mathbf{0.1093 \pm 0.1571}$ & $\mathbf{0.0939 \pm 0.0225}$ & $\mathbf{0.1527 \pm 0.0471}$ \\
+ & DSM & $0.0369 \pm 0.0041$ & $0.1298 \pm 0.0036$ & $0.2626 \pm 0.1884$ & $0.1417 \pm 0.0169$ & $0.2284 \pm 0.0411$ \\
+\addlinespace
+1000 & CINDES & $\mathbf{0.0317 \pm 0.0028}$ & $\mathbf{0.1202 \pm 0.0031}$ & $\mathbf{0.0841 \pm 0.1016}$ & $\mathbf{0.0751 \pm 0.0152}$ & $\mathbf{0.1128 \pm 0.0328}$ \\
+ & DSM & $0.0326 \pm 0.0033$ & $0.1237 \pm 0.0036$ & $0.1785 \pm 0.1331$ & $0.1110 \pm 0.0231$ & $0.1644 \pm 0.0433$ \\
+\addlinespace
+1500 & CINDES & $\mathbf{0.0298 \pm 0.0024}$ & $\mathbf{0.1186 \pm 0.0019}$ & $\mathbf{0.1065 \pm 0.1061}$ & $\mathbf{0.0629 \pm 0.0107}$ & $\mathbf{0.0821 \pm 0.0160}$ \\
+ & DSM & $0.0308 \pm 0.0039$ & $0.1199 \pm 0.0038$ & $0.1642 \pm 0.0993$ & $0.0936 \pm 0.0106$ & $0.1306 \pm 0.0178$ \\
+\addlinespace
+2000 & CINDES & $0.0283 \pm 0.0012$ & $\mathbf{0.1165 \pm 0.0019}$ & $\mathbf{0.0867 \pm 0.0796}$ & $\mathbf{0.0573 \pm 0.0097}$ & $\mathbf{0.0676 \pm 0.0144}$ \\
+ & DSM & $\mathbf{0.0279 \pm 0.0020}$ & $0.1178 \pm 0.0018$ & $0.1336 \pm 0.0868$ & $0.0824 \pm 0.0076$ & $0.1100 \pm 0.0134$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Computation time.}
+At $n=2000$, CINDES and DSM take mean times of $2.45$ and $31.00$
+seconds for final refitting, and $250.92$ and $20.74$ seconds for
+generation. Their recorded totals, summing cross-validation training and
+validation, final refitting, and generation, are $468.42$ and $582.44$
+seconds. These sums describe recorded stage times; concurrent stages need
+not have the same elapsed wall-clock duration. Table~\ref{tab:cindes_exponential_runtime}
+shows that the recorded total is lower for DSM at $n=500$ and $n=1000$,
+nearly equal at $n=1500$, and lower for CINDES at $n=2000$.
+
+% Exponential runtime table: exact reported values.
+\begin{table}[htbp]
+\centering
+\small
+\setlength{\tabcolsep}{4pt}
+\caption{Recorded computation times in seconds for the exponential experiment, using $20$ paired replications at each sample size. Entries are mean $\pm$ sample standard deviation; boldface identifies the smaller mean. Final refit denotes training the selected model on all observations after cross-validation. Recorded total includes CV training, CV validation, final refitting, and generation. A sum of recorded stage times need not equal elapsed wall-clock time when work is performed in parallel.}
+\label{tab:cindes_exponential_runtime}
+\begin{tabular}{rlccccc}
+\toprule
+$n$ & Method & CV training & CV validation & Final refit & Generation & \shortstack{Recorded\\total} \\
+\midrule
+500 & CINDES & $\mathbf{85.69 \pm 19.28}$ & $4.76 \pm 1.06$ & $\mathbf{0.39 \pm 0.19}$ & $333.71 \pm 87.24$ & $424.54 \pm 105.85$ \\
+ & DSM & $174.12 \pm 23.26$ & $\mathbf{3.32 \pm 0.38}$ & $6.10 \pm 2.65$ & $\mathbf{25.71 \pm 5.28}$ & $\mathbf{209.25 \pm 30.28}$ \\
+\addlinespace
+1000 & CINDES & $\mathbf{110.31 \pm 12.42}$ & $3.97 \pm 0.57$ & $\mathbf{0.67 \pm 0.23}$ & $266.22 \pm 46.65$ & $381.16 \pm 59.59$ \\
+ & DSM & $267.55 \pm 26.32$ & $\mathbf{3.40 \pm 0.36}$ & $12.93 \pm 4.34$ & $\mathbf{21.75 \pm 3.25}$ & $\mathbf{305.64 \pm 31.07}$ \\
+\addlinespace
+1500 & CINDES & $\mathbf{145.88 \pm 13.62}$ & $3.92 \pm 0.47$ & $\mathbf{1.21 \pm 0.53}$ & $261.43 \pm 40.23$ & $\mathbf{412.44 \pm 53.71}$ \\
+ & DSM & $371.92 \pm 26.99$ & $\mathbf{3.72 \pm 0.29}$ & $18.95 \pm 4.83$ & $\mathbf{21.23 \pm 2.51}$ & $415.82 \pm 29.47$ \\
+\addlinespace
+2000 & CINDES & $\mathbf{211.01 \pm 8.31}$ & $\mathbf{4.03 \pm 0.30}$ & $\mathbf{2.45 \pm 1.70}$ & $250.92 \pm 12.39$ & $\mathbf{468.42 \pm 19.12}$ \\
+ & DSM & $526.48 \pm 15.00$ & $4.22 \pm 0.10$ & $31.00 \pm 5.31$ & $\mathbf{20.74 \pm 0.57}$ & $582.44 \pm 16.97$ \\
+\bottomrule
+\end{tabular}
+\end{table}

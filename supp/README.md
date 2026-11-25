@@ -1,5 +1,7 @@
 # Supplementary reviewer-response experiments
 
+The manuscript-ready LaTeX section is in [`experiments_section.tex`](experiments_section.tex). It includes all three study descriptions and the six accuracy and runtime tables below.
+
 The three studies compare CINDES and DSM on paired simulated datasets. Each package retains its own scientific code, configuration, reported results, and verification material in the original relative layout. Run commands from the relevant package directory. The table numbers below follow the latest reviewer-response PDF.
 
 | Study | PDF table | Design | Saved results |
