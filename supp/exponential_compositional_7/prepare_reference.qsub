@@ -1,0 +1,17 @@
+#!/bin/bash -l
+# Submit through submit_scc.sh; arguments: output root, profile, activation script.
+#$ -cwd
+#$ -N cindes_exp_ref
+#$ -j y
+#$ -pe omp 2
+#$ -l mem_per_core=4G
+#$ -l h_rt=01:00:00
+set -eo pipefail
+: "${SGE_O_WORKDIR:?Submit from the package directory.}"
+cd "$SGE_O_WORKDIR"
+output_root="${1:?Missing output root; use submit_scc.sh.}"
+profile="${2:?Missing study profile.}"
+source ./scc_env.sh "${3:--}"
+python -u prepare_reference.py --root "$output_root" --profile "$profile"
+date
+

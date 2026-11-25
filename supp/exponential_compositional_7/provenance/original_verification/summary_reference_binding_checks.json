@@ -1,0 +1,22 @@
+{
+  "status": "passed",
+  "current_smoke": "v2",
+  "strict_summary": "passed",
+  "return_bundle": "passed",
+  "archived_export_exact_reproduction_count": 6,
+  "negative_reference_binding_checks": [
+    {
+      "program": "summarize_results.py",
+      "exit_code": 1,
+      "error": "Summary failed: The cindes metrics use a different evaluation reference sample"
+    },
+    {
+      "program": "make_return_bundle.py",
+      "exit_code": 1,
+      "error": "Bundle failed: The cindes metrics use a different evaluation reference sample"
+    }
+  ],
+  "negative_check_note": "Copied a finished smoke study, changed only CINDES reference_sha256 in its metric and paired records, and updated their surrounding integrity hashes; both collection paths rejected the cross-reference mismatch explicitly. Original v2 outputs were unchanged.",
+  "summary_source_sha256": "dff5b1696e97841c235599a013c0c0c41f26163fabcf5359b7eec981d14cd092",
+  "bundle_source_sha256": "fe12991cda80fe8f25032ab300e68e3af70a6ba54c81a786b37a74438a75a63e"
+}

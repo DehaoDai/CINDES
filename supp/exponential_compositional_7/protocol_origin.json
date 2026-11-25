@@ -1,0 +1,54 @@
+{
+  "pilot_archive_sha256": "c78824780ae9ce3f9a4a12bd3b4aac1c1ee405c2f1a876e18cec39a3b48b4a19",
+  "sampler_diagnostic_archive_sha256": "fd459bfb05ff9f586f9d0b67b59314d1f40e33213dc2af40798f8fa4f08ccd63",
+  "unchanged_source_files": [
+    {
+      "source": "centered_exponential_pilot",
+      "path": "experiment/models.py",
+      "sha256": "dae167cd082438f8d5eacbd823c3865ed6a6c80a0b6005faf293f1f1769eb302"
+    },
+    {
+      "source": "centered_exponential_pilot",
+      "path": "experiment/reference.py",
+      "sha256": "fb6cc9cb960ad3a88af26e364a37c6737df2b56a8e1eb616d281377a5bfd294e"
+    },
+    {
+      "source": "centered_exponential_pilot",
+      "path": "experiment/training.py",
+      "sha256": "eebfdc10fb4388a86378fdec566b2b5748edfd5831d718d283fbd4a78744f9f5"
+    },
+    {
+      "source": "centered_exponential_pilot",
+      "path": "experiment/sampling.py",
+      "sha256": "f6b6731f625255fa8b2566689bd2c55cf19f18285aa8b99e3728438d66bfd769"
+    },
+    {
+      "source": "centered_exponential_pilot",
+      "path": "experiment/dgp.py",
+      "sha256": "522932cbcac6d1145bb027b3d4478d2fb9a5d8323ecbedfd14145a583f48fbe0"
+    },
+    {
+      "source": "centered_exponential_pilot",
+      "path": "experiment/evaluation.py",
+      "sha256": "9d5fbffa80900dbd22e075f31b25646b22a6c1c51ed0e3dc2f191d5be941abda"
+    },
+    {
+      "source": "centered_exponential_pilot",
+      "path": "experiment/reference_score_table.npz",
+      "sha256": "c53dc4e1454fae7af28878d79283ec4909f28361f2b873125eec36998d8ec34b"
+    },
+    {
+      "source": "sampler_diagnostic",
+      "path": "experiment/sampling_variants.py",
+      "sha256": "111b6664674c31115b8c40da9f6371fa10a04b71ede6ac352ea6de0218e0228c"
+    }
+  ],
+  "selected_sampler": {
+    "initialization": "reference_T",
+    "M": 400,
+    "K": 1000,
+    "T": 3.0,
+    "delta": 0.001
+  },
+  "selected_using": "Generic fidelity to saved CINDES densities, before the new target comparison"
+}

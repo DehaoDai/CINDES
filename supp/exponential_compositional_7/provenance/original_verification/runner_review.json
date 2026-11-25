@@ -1,0 +1,128 @@
+{
+  "status": "passed",
+  "reviewed_utc": "2026-11-23T04:51:34.826269+00:00",
+  "scope": "Independent source review plus standard-library provenance, import, and seed-map checks. End-to-end CPU execution and SCC GPU preflight are separate checks.",
+  "pilot_and_selected_sampler_source_hashes_unchanged": {
+    "experiment/models.py": true,
+    "experiment/reference.py": true,
+    "experiment/training.py": true,
+    "experiment/sampling.py": true,
+    "experiment/dgp.py": true,
+    "experiment/evaluation.py": true,
+    "experiment/reference_score_table.npz": true,
+    "experiment/sampling_variants.py": true
+  },
+  "statistical_module_imports": {
+    "models.py": [
+      "__future__",
+      "reference",
+      "torch"
+    ],
+    "training.py": [
+      "__future__",
+      "argparse",
+      "contextlib",
+      "fcntl",
+      "hashlib",
+      "json",
+      "math",
+      "models",
+      "numpy",
+      "os",
+      "pathlib",
+      "reference",
+      "time",
+      "torch"
+    ],
+    "reference.py": [
+      "__future__",
+      "argparse",
+      "dataclasses",
+      "hashlib",
+      "math",
+      "numpy",
+      "pathlib",
+      "scipy",
+      "time",
+      "torch"
+    ],
+    "sampling.py": [
+      "__future__",
+      "math",
+      "numpy",
+      "reference",
+      "time",
+      "torch",
+      "typing"
+    ],
+    "sampling_variants.py": [
+      "__future__",
+      "math",
+      "numpy",
+      "reference",
+      "sampling",
+      "time",
+      "torch"
+    ]
+  },
+  "task_mapping_checks": {
+    "n1000": {
+      "tasks": 20,
+      "unique_fit_seeds": true,
+      "task_ids_sequential": true,
+      "reference_seed_distinct": true
+    },
+    "full": {
+      "tasks": 80,
+      "unique_fit_seeds": true,
+      "task_ids_sequential": true,
+      "reference_seed_distinct": true
+    },
+    "smoke": {
+      "tasks": 1,
+      "unique_fit_seeds": true,
+      "task_ids_sequential": true,
+      "reference_seed_distinct": true
+    }
+  },
+  "review_findings": [
+    {
+      "finding": "Completed result rows must equal their separately hashed method metrics.",
+      "status": "resolved",
+      "implementation": "common.validate_task_record requires metrics.json paths, exact row equality, required data/model/selection/generated artifacts, and bound checksums."
+    },
+    {
+      "finding": "Completed-task fast reuse must validate its evaluation reference before returning.",
+      "status": "resolved",
+      "implementation": "run_experiment.run now validates the reference before completed-task reuse and compares both method reference_sha256 fields with the validated reference."
+    }
+  ],
+  "source_review_checks": [
+    "Networks, three-fold separate lambda/duration selection, common cosine prefix, losses, negative sampling, and reference-aware DSM remain byte-identical to the pilot.",
+    "Both methods use paired training data and folds; fitting seeds separate sample sizes and replications; method execution order alternates.",
+    "The selected q_T initialization, M=400, K=1000, T=3, delta=0.001, noisy last step, and absence of terminal correction are preserved.",
+    "Target simulation is confined to data/reference preparation. Target evaluation is constructed after both models have selected, refitted, and generated samples.",
+    "Generic CUDA is resolved to a concrete device for the posterior equality check in generation and preflight. DSM reference objects are created from actual tensor devices.",
+    "Completed fitting stages and sampling chunks are checked against immutable identities and checksums; interrupted folds are moved outside the CV candidate tree and restarted deterministically.",
+    "Timing fields sum their stated completed training, validation, refit, sampling, serialization, and evaluation stages; paired elapsed time is recorded separately.",
+    "Per-stage environment records retain GPU/model/software information across resumption; same-GPU wording applies to uninterrupted paired tasks."
+  ],
+  "gpu_execution_performed_by_this_review": false,
+  "scc_jobs_submitted_by_this_review": false,
+  "source_sha256": {
+    "run_experiment.py": "8b2d309f4ac0c7a1559b711592a1ff14b15d2a6866afbc4ec00c6e5cfdaa75e2",
+    "common.py": "d16cbb08c6b6c90b0c3454e1a0f44e5d236d03657bd5b738787df585bdc92c83",
+    "preflight.py": "3b927b7ac030aa3af96d89bf737aa7102ab75fab80de25d5cca3c3cceebe92bb",
+    "study_config.py": "7dc5d95d70bb4c90ab011166d487bb93a4319ab9e144cd53270d4ac9ee5fb46a",
+    "prepare_reference.py": "3f54ece0eca634b7014f8bf34aa8a4f69187935163d5ac41524cc65a41eafa29",
+    "protocol_origin.json": "cfe0a66504f3ad589c44e7e9435a1e687165c9d324c89b973370a35f19027315",
+    "experiment/models.py": "dae167cd082438f8d5eacbd823c3865ed6a6c80a0b6005faf293f1f1769eb302",
+    "experiment/reference.py": "fb6cc9cb960ad3a88af26e364a37c6737df2b56a8e1eb616d281377a5bfd294e",
+    "experiment/training.py": "eebfdc10fb4388a86378fdec566b2b5748edfd5831d718d283fbd4a78744f9f5",
+    "experiment/sampling.py": "f6b6731f625255fa8b2566689bd2c55cf19f18285aa8b99e3728438d66bfd769",
+    "experiment/dgp.py": "522932cbcac6d1145bb027b3d4478d2fb9a5d8323ecbedfd14145a583f48fbe0",
+    "experiment/evaluation.py": "9d5fbffa80900dbd22e075f31b25646b22a6c1c51ed0e3dc2f191d5be941abda",
+    "experiment/reference_score_table.npz": "c53dc4e1454fae7af28878d79283ec4909f28361f2b873125eec36998d8ec34b",
+    "experiment/sampling_variants.py": "111b6664674c31115b8c40da9f6371fa10a04b71ede6ac352ea6de0218e0228c"
+  }
+}

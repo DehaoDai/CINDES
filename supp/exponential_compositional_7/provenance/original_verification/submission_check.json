@@ -1,0 +1,26 @@
+{
+  "status": "passed",
+  "scheduler_calls": "local fake qsub only; no SCC submission",
+  "checks": [
+    "Bash syntax for all five scripts",
+    "Dry run submits nothing and creates no output directory",
+    "Default paired array uses separate argv, correct dependencies, two-task cap, and paths with spaces",
+    "Accidental duplicate is refused; explicit resume records a fresh chain",
+    "Status calls only the summarizer",
+    "Pilot preserves full profile and explicitly requests a partial summary",
+    "Full profile submits 80 paired tasks",
+    "Array rejection preserves reference ID and stops before summary without cancellation",
+    "Unparseable scheduler output stops without automatic retry",
+    "Invalid task ranges and conflicting options fail before submission",
+    "Activation tolerates unset variables, respects allocated threads, and preserves assigned GPU",
+    "Preparation and array wrappers forward exact root, profile, task ID, and CUDA choice",
+    "Summary wrapper is strict, preserves failure status after diagnostic bundle, and handles intentional pilots"
+  ],
+  "sources": {
+    "submit_scc.sh": "144520b5388b548d74a33732e493f6feea187c9656a30f7adbceefd06bbafd4a",
+    "scc_env.sh": "9460b6ecc7154c8f0778d9c38f5a3b6cd1d897361f4443d7b2dac8b14b26b0ec",
+    "prepare_reference.qsub": "3d9a51c08b49fc2c12134f7b1734e78e78841743c8656592107042650e4dafaf",
+    "full_array.qsub": "ef4bb4cd791ea1341a723242ea5afeae3028ebe84abb578a5209a0a04f1d0594",
+    "summarize.qsub": "cac9565b3f21df6644ef9669f71e7abb42818e193221c244fb22742ec0d783b9"
+  }
+}

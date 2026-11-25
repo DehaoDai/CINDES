@@ -1,0 +1,762 @@
+{
+  "profile": "full",
+  "config": {
+    "protocol": "centered_exponential_scc_confirmation_v1",
+    "d": 7,
+    "sample_sizes": [
+      500,
+      1000,
+      1500,
+      2000
+    ],
+    "seeds": [
+      4000,
+      4001,
+      4002,
+      4003,
+      4004,
+      4005,
+      4006,
+      4007,
+      4008,
+      4009,
+      4010,
+      4011,
+      4012,
+      4013,
+      4014,
+      4015,
+      4016,
+      4017,
+      4018,
+      4019
+    ],
+    "dgp": {
+      "pot_seed": 11,
+      "amplitude": 1.5,
+      "kappa": 1.0,
+      "feature": "psi(y)=1-2*exp(-y)",
+      "base": "product Exp(1)"
+    },
+    "coordinate_transform": "Z=log(Y), common to both estimators",
+    "reference": "product log-Exp(1), known to both estimators",
+    "network": {
+      "hidden_layers": 2,
+      "width": 64,
+      "activation": "Softplus",
+      "softplus_beta": 5.0,
+      "dsm_time_frequencies": 8
+    },
+    "lambdas": [
+      0.0,
+      0.01,
+      0.1,
+      0.3,
+      1.0,
+      3.0
+    ],
+    "folds": 3,
+    "epochs": 2000,
+    "checks": 100,
+    "batch_size": 256,
+    "normalizer_size": 65536,
+    "fake_ratio": 2,
+    "dsm_validation_draws_per_observation": 8,
+    "optimizer": "Adam",
+    "learning_rate": 0.001,
+    "weight_decay": 0.0,
+    "selection": "Separate three-fold lambda and duration selection; CINDES normalized density NLL, DSM denoising loss",
+    "scheduler": "Cosine over full cap; same prefix retained in refit",
+    "cindes_output": "b-softplus(g); no fixed R and no added tail term",
+    "dsm_parameterization": "reference_residual",
+    "initialization": "reference_T",
+    "M": 400,
+    "K": 1000,
+    "T": 3.0,
+    "delta": 0.001,
+    "n_gen": 5000,
+    "generation_shards": 10,
+    "generation_batch": 64,
+    "last_step_noise": true,
+    "terminal_correction": false,
+    "support_clipping": false,
+    "reference_size": 524288,
+    "reference_seed": 53000001,
+    "metrics": [
+      "tv1",
+      "tv2",
+      "llgap",
+      "h_tv",
+      "h_w1"
+    ],
+    "histogram_bins": 20,
+    "marginal_bins": "Exp(1) quantiles, including zero and infinity",
+    "H_bins": "standard-normal quantiles, including both infinite tails",
+    "llgap": "signed reference minus generated mean unnormalized target log density",
+    "fit_seed_rule": "100000*n + replication_seed",
+    "data_seed_rule": "fit_seed",
+    "fold_seed_rule": "700000 + fit_seed",
+    "training_truth_access": false,
+    "method_order": "CINDES first for even replication seeds; DSM first for odd seeds",
+    "profile": "full",
+    "test_only": false
+  },
+  "tasks": [
+    {
+      "task_id": 1,
+      "n": 500,
+      "seed": 4000,
+      "fit_seed": 50004000,
+      "data_seed": 50004000,
+      "fold_seed": 50704000
+    },
+    {
+      "task_id": 2,
+      "n": 500,
+      "seed": 4001,
+      "fit_seed": 50004001,
+      "data_seed": 50004001,
+      "fold_seed": 50704001
+    },
+    {
+      "task_id": 3,
+      "n": 500,
+      "seed": 4002,
+      "fit_seed": 50004002,
+      "data_seed": 50004002,
+      "fold_seed": 50704002
+    },
+    {
+      "task_id": 4,
+      "n": 500,
+      "seed": 4003,
+      "fit_seed": 50004003,
+      "data_seed": 50004003,
+      "fold_seed": 50704003
+    },
+    {
+      "task_id": 5,
+      "n": 500,
+      "seed": 4004,
+      "fit_seed": 50004004,
+      "data_seed": 50004004,
+      "fold_seed": 50704004
+    },
+    {
+      "task_id": 6,
+      "n": 500,
+      "seed": 4005,
+      "fit_seed": 50004005,
+      "data_seed": 50004005,
+      "fold_seed": 50704005
+    },
+    {
+      "task_id": 7,
+      "n": 500,
+      "seed": 4006,
+      "fit_seed": 50004006,
+      "data_seed": 50004006,
+      "fold_seed": 50704006
+    },
+    {
+      "task_id": 8,
+      "n": 500,
+      "seed": 4007,
+      "fit_seed": 50004007,
+      "data_seed": 50004007,
+      "fold_seed": 50704007
+    },
+    {
+      "task_id": 9,
+      "n": 500,
+      "seed": 4008,
+      "fit_seed": 50004008,
+      "data_seed": 50004008,
+      "fold_seed": 50704008
+    },
+    {
+      "task_id": 10,
+      "n": 500,
+      "seed": 4009,
+      "fit_seed": 50004009,
+      "data_seed": 50004009,
+      "fold_seed": 50704009
+    },
+    {
+      "task_id": 11,
+      "n": 500,
+      "seed": 4010,
+      "fit_seed": 50004010,
+      "data_seed": 50004010,
+      "fold_seed": 50704010
+    },
+    {
+      "task_id": 12,
+      "n": 500,
+      "seed": 4011,
+      "fit_seed": 50004011,
+      "data_seed": 50004011,
+      "fold_seed": 50704011
+    },
+    {
+      "task_id": 13,
+      "n": 500,
+      "seed": 4012,
+      "fit_seed": 50004012,
+      "data_seed": 50004012,
+      "fold_seed": 50704012
+    },
+    {
+      "task_id": 14,
+      "n": 500,
+      "seed": 4013,
+      "fit_seed": 50004013,
+      "data_seed": 50004013,
+      "fold_seed": 50704013
+    },
+    {
+      "task_id": 15,
+      "n": 500,
+      "seed": 4014,
+      "fit_seed": 50004014,
+      "data_seed": 50004014,
+      "fold_seed": 50704014
+    },
+    {
+      "task_id": 16,
+      "n": 500,
+      "seed": 4015,
+      "fit_seed": 50004015,
+      "data_seed": 50004015,
+      "fold_seed": 50704015
+    },
+    {
+      "task_id": 17,
+      "n": 500,
+      "seed": 4016,
+      "fit_seed": 50004016,
+      "data_seed": 50004016,
+      "fold_seed": 50704016
+    },
+    {
+      "task_id": 18,
+      "n": 500,
+      "seed": 4017,
+      "fit_seed": 50004017,
+      "data_seed": 50004017,
+      "fold_seed": 50704017
+    },
+    {
+      "task_id": 19,
+      "n": 500,
+      "seed": 4018,
+      "fit_seed": 50004018,
+      "data_seed": 50004018,
+      "fold_seed": 50704018
+    },
+    {
+      "task_id": 20,
+      "n": 500,
+      "seed": 4019,
+      "fit_seed": 50004019,
+      "data_seed": 50004019,
+      "fold_seed": 50704019
+    },
+    {
+      "task_id": 21,
+      "n": 1000,
+      "seed": 4000,
+      "fit_seed": 100004000,
+      "data_seed": 100004000,
+      "fold_seed": 100704000
+    },
+    {
+      "task_id": 22,
+      "n": 1000,
+      "seed": 4001,
+      "fit_seed": 100004001,
+      "data_seed": 100004001,
+      "fold_seed": 100704001
+    },
+    {
+      "task_id": 23,
+      "n": 1000,
+      "seed": 4002,
+      "fit_seed": 100004002,
+      "data_seed": 100004002,
+      "fold_seed": 100704002
+    },
+    {
+      "task_id": 24,
+      "n": 1000,
+      "seed": 4003,
+      "fit_seed": 100004003,
+      "data_seed": 100004003,
+      "fold_seed": 100704003
+    },
+    {
+      "task_id": 25,
+      "n": 1000,
+      "seed": 4004,
+      "fit_seed": 100004004,
+      "data_seed": 100004004,
+      "fold_seed": 100704004
+    },
+    {
+      "task_id": 26,
+      "n": 1000,
+      "seed": 4005,
+      "fit_seed": 100004005,
+      "data_seed": 100004005,
+      "fold_seed": 100704005
+    },
+    {
+      "task_id": 27,
+      "n": 1000,
+      "seed": 4006,
+      "fit_seed": 100004006,
+      "data_seed": 100004006,
+      "fold_seed": 100704006
+    },
+    {
+      "task_id": 28,
+      "n": 1000,
+      "seed": 4007,
+      "fit_seed": 100004007,
+      "data_seed": 100004007,
+      "fold_seed": 100704007
+    },
+    {
+      "task_id": 29,
+      "n": 1000,
+      "seed": 4008,
+      "fit_seed": 100004008,
+      "data_seed": 100004008,
+      "fold_seed": 100704008
+    },
+    {
+      "task_id": 30,
+      "n": 1000,
+      "seed": 4009,
+      "fit_seed": 100004009,
+      "data_seed": 100004009,
+      "fold_seed": 100704009
+    },
+    {
+      "task_id": 31,
+      "n": 1000,
+      "seed": 4010,
+      "fit_seed": 100004010,
+      "data_seed": 100004010,
+      "fold_seed": 100704010
+    },
+    {
+      "task_id": 32,
+      "n": 1000,
+      "seed": 4011,
+      "fit_seed": 100004011,
+      "data_seed": 100004011,
+      "fold_seed": 100704011
+    },
+    {
+      "task_id": 33,
+      "n": 1000,
+      "seed": 4012,
+      "fit_seed": 100004012,
+      "data_seed": 100004012,
+      "fold_seed": 100704012
+    },
+    {
+      "task_id": 34,
+      "n": 1000,
+      "seed": 4013,
+      "fit_seed": 100004013,
+      "data_seed": 100004013,
+      "fold_seed": 100704013
+    },
+    {
+      "task_id": 35,
+      "n": 1000,
+      "seed": 4014,
+      "fit_seed": 100004014,
+      "data_seed": 100004014,
+      "fold_seed": 100704014
+    },
+    {
+      "task_id": 36,
+      "n": 1000,
+      "seed": 4015,
+      "fit_seed": 100004015,
+      "data_seed": 100004015,
+      "fold_seed": 100704015
+    },
+    {
+      "task_id": 37,
+      "n": 1000,
+      "seed": 4016,
+      "fit_seed": 100004016,
+      "data_seed": 100004016,
+      "fold_seed": 100704016
+    },
+    {
+      "task_id": 38,
+      "n": 1000,
+      "seed": 4017,
+      "fit_seed": 100004017,
+      "data_seed": 100004017,
+      "fold_seed": 100704017
+    },
+    {
+      "task_id": 39,
+      "n": 1000,
+      "seed": 4018,
+      "fit_seed": 100004018,
+      "data_seed": 100004018,
+      "fold_seed": 100704018
+    },
+    {
+      "task_id": 40,
+      "n": 1000,
+      "seed": 4019,
+      "fit_seed": 100004019,
+      "data_seed": 100004019,
+      "fold_seed": 100704019
+    },
+    {
+      "task_id": 41,
+      "n": 1500,
+      "seed": 4000,
+      "fit_seed": 150004000,
+      "data_seed": 150004000,
+      "fold_seed": 150704000
+    },
+    {
+      "task_id": 42,
+      "n": 1500,
+      "seed": 4001,
+      "fit_seed": 150004001,
+      "data_seed": 150004001,
+      "fold_seed": 150704001
+    },
+    {
+      "task_id": 43,
+      "n": 1500,
+      "seed": 4002,
+      "fit_seed": 150004002,
+      "data_seed": 150004002,
+      "fold_seed": 150704002
+    },
+    {
+      "task_id": 44,
+      "n": 1500,
+      "seed": 4003,
+      "fit_seed": 150004003,
+      "data_seed": 150004003,
+      "fold_seed": 150704003
+    },
+    {
+      "task_id": 45,
+      "n": 1500,
+      "seed": 4004,
+      "fit_seed": 150004004,
+      "data_seed": 150004004,
+      "fold_seed": 150704004
+    },
+    {
+      "task_id": 46,
+      "n": 1500,
+      "seed": 4005,
+      "fit_seed": 150004005,
+      "data_seed": 150004005,
+      "fold_seed": 150704005
+    },
+    {
+      "task_id": 47,
+      "n": 1500,
+      "seed": 4006,
+      "fit_seed": 150004006,
+      "data_seed": 150004006,
+      "fold_seed": 150704006
+    },
+    {
+      "task_id": 48,
+      "n": 1500,
+      "seed": 4007,
+      "fit_seed": 150004007,
+      "data_seed": 150004007,
+      "fold_seed": 150704007
+    },
+    {
+      "task_id": 49,
+      "n": 1500,
+      "seed": 4008,
+      "fit_seed": 150004008,
+      "data_seed": 150004008,
+      "fold_seed": 150704008
+    },
+    {
+      "task_id": 50,
+      "n": 1500,
+      "seed": 4009,
+      "fit_seed": 150004009,
+      "data_seed": 150004009,
+      "fold_seed": 150704009
+    },
+    {
+      "task_id": 51,
+      "n": 1500,
+      "seed": 4010,
+      "fit_seed": 150004010,
+      "data_seed": 150004010,
+      "fold_seed": 150704010
+    },
+    {
+      "task_id": 52,
+      "n": 1500,
+      "seed": 4011,
+      "fit_seed": 150004011,
+      "data_seed": 150004011,
+      "fold_seed": 150704011
+    },
+    {
+      "task_id": 53,
+      "n": 1500,
+      "seed": 4012,
+      "fit_seed": 150004012,
+      "data_seed": 150004012,
+      "fold_seed": 150704012
+    },
+    {
+      "task_id": 54,
+      "n": 1500,
+      "seed": 4013,
+      "fit_seed": 150004013,
+      "data_seed": 150004013,
+      "fold_seed": 150704013
+    },
+    {
+      "task_id": 55,
+      "n": 1500,
+      "seed": 4014,
+      "fit_seed": 150004014,
+      "data_seed": 150004014,
+      "fold_seed": 150704014
+    },
+    {
+      "task_id": 56,
+      "n": 1500,
+      "seed": 4015,
+      "fit_seed": 150004015,
+      "data_seed": 150004015,
+      "fold_seed": 150704015
+    },
+    {
+      "task_id": 57,
+      "n": 1500,
+      "seed": 4016,
+      "fit_seed": 150004016,
+      "data_seed": 150004016,
+      "fold_seed": 150704016
+    },
+    {
+      "task_id": 58,
+      "n": 1500,
+      "seed": 4017,
+      "fit_seed": 150004017,
+      "data_seed": 150004017,
+      "fold_seed": 150704017
+    },
+    {
+      "task_id": 59,
+      "n": 1500,
+      "seed": 4018,
+      "fit_seed": 150004018,
+      "data_seed": 150004018,
+      "fold_seed": 150704018
+    },
+    {
+      "task_id": 60,
+      "n": 1500,
+      "seed": 4019,
+      "fit_seed": 150004019,
+      "data_seed": 150004019,
+      "fold_seed": 150704019
+    },
+    {
+      "task_id": 61,
+      "n": 2000,
+      "seed": 4000,
+      "fit_seed": 200004000,
+      "data_seed": 200004000,
+      "fold_seed": 200704000
+    },
+    {
+      "task_id": 62,
+      "n": 2000,
+      "seed": 4001,
+      "fit_seed": 200004001,
+      "data_seed": 200004001,
+      "fold_seed": 200704001
+    },
+    {
+      "task_id": 63,
+      "n": 2000,
+      "seed": 4002,
+      "fit_seed": 200004002,
+      "data_seed": 200004002,
+      "fold_seed": 200704002
+    },
+    {
+      "task_id": 64,
+      "n": 2000,
+      "seed": 4003,
+      "fit_seed": 200004003,
+      "data_seed": 200004003,
+      "fold_seed": 200704003
+    },
+    {
+      "task_id": 65,
+      "n": 2000,
+      "seed": 4004,
+      "fit_seed": 200004004,
+      "data_seed": 200004004,
+      "fold_seed": 200704004
+    },
+    {
+      "task_id": 66,
+      "n": 2000,
+      "seed": 4005,
+      "fit_seed": 200004005,
+      "data_seed": 200004005,
+      "fold_seed": 200704005
+    },
+    {
+      "task_id": 67,
+      "n": 2000,
+      "seed": 4006,
+      "fit_seed": 200004006,
+      "data_seed": 200004006,
+      "fold_seed": 200704006
+    },
+    {
+      "task_id": 68,
+      "n": 2000,
+      "seed": 4007,
+      "fit_seed": 200004007,
+      "data_seed": 200004007,
+      "fold_seed": 200704007
+    },
+    {
+      "task_id": 69,
+      "n": 2000,
+      "seed": 4008,
+      "fit_seed": 200004008,
+      "data_seed": 200004008,
+      "fold_seed": 200704008
+    },
+    {
+      "task_id": 70,
+      "n": 2000,
+      "seed": 4009,
+      "fit_seed": 200004009,
+      "data_seed": 200004009,
+      "fold_seed": 200704009
+    },
+    {
+      "task_id": 71,
+      "n": 2000,
+      "seed": 4010,
+      "fit_seed": 200004010,
+      "data_seed": 200004010,
+      "fold_seed": 200704010
+    },
+    {
+      "task_id": 72,
+      "n": 2000,
+      "seed": 4011,
+      "fit_seed": 200004011,
+      "data_seed": 200004011,
+      "fold_seed": 200704011
+    },
+    {
+      "task_id": 73,
+      "n": 2000,
+      "seed": 4012,
+      "fit_seed": 200004012,
+      "data_seed": 200004012,
+      "fold_seed": 200704012
+    },
+    {
+      "task_id": 74,
+      "n": 2000,
+      "seed": 4013,
+      "fit_seed": 200004013,
+      "data_seed": 200004013,
+      "fold_seed": 200704013
+    },
+    {
+      "task_id": 75,
+      "n": 2000,
+      "seed": 4014,
+      "fit_seed": 200004014,
+      "data_seed": 200004014,
+      "fold_seed": 200704014
+    },
+    {
+      "task_id": 76,
+      "n": 2000,
+      "seed": 4015,
+      "fit_seed": 200004015,
+      "data_seed": 200004015,
+      "fold_seed": 200704015
+    },
+    {
+      "task_id": 77,
+      "n": 2000,
+      "seed": 4016,
+      "fit_seed": 200004016,
+      "data_seed": 200004016,
+      "fold_seed": 200704016
+    },
+    {
+      "task_id": 78,
+      "n": 2000,
+      "seed": 4017,
+      "fit_seed": 200004017,
+      "data_seed": 200004017,
+      "fold_seed": 200704017
+    },
+    {
+      "task_id": 79,
+      "n": 2000,
+      "seed": 4018,
+      "fit_seed": 200004018,
+      "data_seed": 200004018,
+      "fold_seed": 200704018
+    },
+    {
+      "task_id": 80,
+      "n": 2000,
+      "seed": 4019,
+      "fit_seed": 200004019,
+      "data_seed": 200004019,
+      "fold_seed": 200704019
+    }
+  ],
+  "source_sha256": {
+    "study_config.py": "7dc5d95d70bb4c90ab011166d487bb93a4319ab9e144cd53270d4ac9ee5fb46a",
+    "common.py": "d16cbb08c6b6c90b0c3454e1a0f44e5d236d03657bd5b738787df585bdc92c83",
+    "prepare_reference.py": "3f54ece0eca634b7014f8bf34aa8a4f69187935163d5ac41524cc65a41eafa29",
+    "run_experiment.py": "8b2d309f4ac0c7a1559b711592a1ff14b15d2a6866afbc4ec00c6e5cfdaa75e2",
+    "preflight.py": "3b927b7ac030aa3af96d89bf737aa7102ab75fab80de25d5cca3c3cceebe92bb",
+    "protocol_origin.json": "cfe0a66504f3ad589c44e7e9435a1e687165c9d324c89b973370a35f19027315",
+    "experiment/models.py": "dae167cd082438f8d5eacbd823c3865ed6a6c80a0b6005faf293f1f1769eb302",
+    "experiment/reference.py": "fb6cc9cb960ad3a88af26e364a37c6737df2b56a8e1eb616d281377a5bfd294e",
+    "experiment/training.py": "eebfdc10fb4388a86378fdec566b2b5748edfd5831d718d283fbd4a78744f9f5",
+    "experiment/sampling.py": "f6b6731f625255fa8b2566689bd2c55cf19f18285aa8b99e3728438d66bfd769",
+    "experiment/sampling_variants.py": "111b6664674c31115b8c40da9f6371fa10a04b71ede6ac352ea6de0218e0228c",
+    "experiment/dgp.py": "522932cbcac6d1145bb027b3d4478d2fb9a5d8323ecbedfd14145a583f48fbe0",
+    "experiment/evaluation.py": "9d5fbffa80900dbd22e075f31b25646b22a6c1c51ed0e3dc2f191d5be941abda",
+    "experiment/reference_score_table.npz": "c53dc4e1454fae7af28878d79283ec4909f28361f2b873125eec36998d8ec34b"
+  }
+}

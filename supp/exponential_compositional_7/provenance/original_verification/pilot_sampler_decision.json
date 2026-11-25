@@ -1,0 +1,55 @@
+{
+  "recorded_utc": "2026-11-23T02:31:36.621020+00:00",
+  "fidelity_analysis_sha256": "9f5d19927f061a537cc16047cc06dc846b8a1f9b23388b1d85b960b9ee7012fd",
+  "fidelity_audit_sha256": "573de8ce57d63e6deb7f86e5e5142da68b5d3eec0e3bc6bded7c89c9e9726582",
+  "recommended_variant": "C",
+  "recommendation": "Use forward-noised reference initialization q_T with M=400 reverse steps for both methods in the next accuracy-focused SCC confirmation. Keep K=1000 for CINDES, T=3, delta=0.001, the noisy last step, and the current training protocol. Retain A and B as documented pilot sensitivity results.",
+  "reasoning": [
+    "The prespecified primary fitted-density sliced Wasserstein-1 discrepancy decreases from 0.03257159 in A to 0.03099164 in B and 0.02635776 in C. C improves the primary discrepancy in each of the three saved fits, with a mean reduction of approximately 19.1% relative to A and 15.0% relative to B.",
+    "C also decreases the marginal histogram TV, all-21-pair histogram TV, and marginal Wasserstein-1 discrepancies relative to B in every saved fit. All four mean discrepancies decrease from A to B to C. This supports an across-metric improvement rather than a tradeoff confined to the primary metric.",
+    "Independent samples of 5000 from each fitted density smoothed to delta have mean sliced Wasserstein-1 discrepancy 0.02507637 against the large fitted bank, with average within-fit SD 0.00339565. C reaches a comparable discrepancy scale on these generic summaries. This comparison is a finite-sample benchmark, not a lower bound to subtract and not proof of exact sampling or equality of full distributions.",
+    "The additional accuracy costs more computation. Mean summed CPU generation durations per 5000-observation CINDES sample are 1052.98 seconds for B and 2041.82 seconds for C. The approximately 1.94-fold cost is acceptable for the proposed accuracy-focused overnight confirmation; B is the documented cheaper alternative if that cost cannot be accommodated.",
+    "The decision uses only the saved CINDES density, known reference, generic coordinate/projection summaries, repeated fitted-density controls, and timing. It does not use target H, target graph, target log density, or the new CINDES-versus-DSM target results. The same initialization and grid changes are applied to DSM.",
+    "Evidence is limited to three existing training datasets of size 1000 in dimension seven. The next 20-seed study should use fresh paired training seeds and this frozen numerical choice. No additional DGP, architecture, regularization, K, T, or delta tuning is recommended from this diagnostic."
+  ],
+  "recommended_settings": {
+    "initialization": "q_T",
+    "M": 400,
+    "K_cindes": 1000,
+    "T": 3.0,
+    "delta": 0.001,
+    "last_step_noise": true,
+    "terminal_correction": false,
+    "support_clipping": false
+  },
+  "primary_metric": "sliced_w1_z",
+  "primary_means": {
+    "A": 0.0325715871106394,
+    "B": 0.030991640509617276,
+    "C": 0.026357755939463805
+  },
+  "primary_relative_reduction_C_vs_A": 0.1907745898309594,
+  "primary_relative_reduction_C_vs_B": 0.14952046726005008,
+  "independent_fitted_sample_means": {
+    "marginal_tv": 0.024957451985677087,
+    "all_pairs_tv": 0.11333418874589223,
+    "marginal_w1_z": 0.024808627633298844,
+    "sliced_w1_z": 0.02507637394788566
+  },
+  "mean_summed_generation_seconds": {
+    "A": {
+      "cindes": 1029.485146392999,
+      "dsm": 20.061636125665245
+    },
+    "B": {
+      "cindes": 1052.9789062430002,
+      "dsm": 20.78343009499925
+    },
+    "C": {
+      "cindes": 2041.8248603033353,
+      "dsm": 36.148087973999885
+    }
+  },
+  "target_metrics_used": false,
+  "scope": "Numerical sampler choice for future confirmation; no new model fitting and no SCC submission"
+}

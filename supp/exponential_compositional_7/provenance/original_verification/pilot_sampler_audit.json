@@ -1,0 +1,101 @@
+{
+  "scope": "Independent sampler mechanics and provenance; no target-quality selection",
+  "sources": {
+    "models.py": "dae167cd082438f8d5eacbd823c3865ed6a6c80a0b6005faf293f1f1769eb302",
+    "reference.py": "fb6cc9cb960ad3a88af26e364a37c6737df2b56a8e1eb616d281377a5bfd294e",
+    "reference_score_table.npz": "c53dc4e1454fae7af28878d79283ec4909f28361f2b873125eec36998d8ec34b",
+    "sampling.py": "f6b6731f625255fa8b2566689bd2c55cf19f18285aa8b99e3728438d66bfd769",
+    "dgp.py": "522932cbcac6d1145bb027b3d4478d2fb9a5d8323ecbedfd14145a583f48fbe0",
+    "evaluation.py": "9d5fbffa80900dbd22e075f31b25646b22a6c1c51ed0e3dc2f191d5be941abda",
+    "sampling_variants.py": "111b6664674c31115b8c40da9f6371fa10a04b71ede6ac352ea6de0218e0228c",
+    "protocol.py": "35b39974d7b02c9f7271dc4685c3019ed64c054c8b95e1fd5d23ce4b00c959b8",
+    "prepare_fitted_banks.py": "64904faa6f6ebf865e33fe7eda3cce41279d9e35ac3e27cd9c29c757ea512d5a",
+    "run_diagnostic.py": "b1a5d9f418f9a382190ab2e2c01bad8b4bb0c616e96a0963a3527b1ecf7752f9"
+  },
+  "torch": "2.15.0+cpu",
+  "numpy": "2.3.5",
+  "nested_grid_and_bridge": {
+    "grid_equal_exactly": true,
+    "max_noise_reconstruction_error_float64": 3.3306690738754696e-16,
+    "max_covariance_identity_error": 6.661338147750939e-16
+  },
+  "initialization_and_gaussian_null": {
+    "normal_initialization_exact": true,
+    "q_T_initialization_exact": true,
+    "B_C_initial_values_identical": true,
+    "baseline_null_bitwise_reproduced": true,
+    "max_B_C_endpoint_error_float32": 2.384185791015625e-06,
+    "batches": [
+      4,
+      4,
+      3
+    ]
+  },
+  "particle_rng_routing": {
+    "coarse_even_uniforms_identical": true,
+    "changing_odd_seed_preserves_even_stream": true,
+    "changing_odd_seed_changes_every_odd_uniform_block": true,
+    "independent_odd_generator_selected": true
+  },
+  "checkpoint_hashes": {
+    "3000/cindes": "e5a6eb65462252a7a0b8022ddfdd76df6d5cf739778e7f8d7e8e2428aa2d0d0d",
+    "3000/dsm": "956db4661dd90d2a943298f0e853398cc3c873c1f14b8e3be90944c2bbc29947",
+    "3001/cindes": "03d6c64e7a9fa4084c01f233da22526269bfd59d770eca3e06d065bb5360138d",
+    "3001/dsm": "7c9c03254b6b6989331ced36758633f1265e0f0ca6136d2d92172745c6fc0bf0",
+    "3002/cindes": "4a674e8723a8f1ec25147db4e0256de33439714f96819bc7cd89e58ce79849b5",
+    "3002/dsm": "154ecdd4ef5b101005c2b80a775341abbcfbb0d4ebf287bc1d954d5ef909e276"
+  },
+  "reused_baseline_sample_hashes": {
+    "3000/cindes": "85e1c44b86422fb5e64339d3f70d28dec14d59dd871531038779d41f4ab21093",
+    "3000/dsm": "d7abd6b64456411b19f460ecf9b737299d8689f9575017ee72b684437b064f2c",
+    "3001/cindes": "8d2cc5262f3ebbaeae72597dac825a8e864edb58e8e27998ef68c5f7b0edf7c5",
+    "3001/dsm": "07a1475b301ce97f752a7b78325ca1580afb368c88b2a94f0b4edd8de6e42cfd",
+    "3002/cindes": "88074a386c1e9cab2ba736e9bdde94a57358c2b6832f5697bb05e0c5935f18ba",
+    "3002/dsm": "b0c1a4c0dfd42724e44b26d747dddbfa319d47e53a1e1713f56e3d35c86518a6"
+  },
+  "model_state_unchanged_after_B_and_C": true,
+  "fitted_bank_p_delta_checks": [
+    {
+      "seed": 3000,
+      "sha256": "65bf61af9733078d8b5f0c791ab5b2f0a6813a1370442064d83a39e208ef8d18",
+      "prefix_rows": 128,
+      "maximum_prefix_error": 0.0
+    },
+    {
+      "seed": 3001,
+      "sha256": "f124f8203e61033ec839a73b7ffce0fac6fb5de3013679241fb00d481e65bcae",
+      "prefix_rows": 128,
+      "maximum_prefix_error": 0.0
+    },
+    {
+      "seed": 3002,
+      "sha256": "72735998c1cff36129f73d24f920656c1edc804bf275296331edb5d928bf5b38",
+      "prefix_rows": 128,
+      "maximum_prefix_error": 0.0
+    }
+  ],
+  "numerical_module_imports": {
+    "sampling_variants.py": [
+      "__future__",
+      "math",
+      "numpy",
+      "reference",
+      "sampling",
+      "time",
+      "torch"
+    ],
+    "prepare_fitted_banks.py": [
+      "hashlib",
+      "json",
+      "models",
+      "numpy",
+      "os",
+      "pathlib",
+      "protocol",
+      "sampling",
+      "time",
+      "torch"
+    ]
+  },
+  "status": "passed"
+}

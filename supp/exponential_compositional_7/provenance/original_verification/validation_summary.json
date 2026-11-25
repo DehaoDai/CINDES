@@ -1,0 +1,113 @@
+{
+  "status": "passed",
+  "verified_utc": "2026-11-23T04:55:48.764494+00:00",
+  "workflow_smoke": {
+    "profile": "smoke",
+    "n": 48,
+    "d": 7,
+    "methods": [
+      "cindes",
+      "dsm"
+    ],
+    "epochs": 2,
+    "K": 16,
+    "M": 400,
+    "n_gen": 32,
+    "folds": 3,
+    "penalties": [
+      0.0,
+      0.1
+    ],
+    "reference_size": 2048,
+    "status": "complete",
+    "study_identity_sha256": "d94793f154b8d1e09b5abe7416ef6c25ccf9559c98b5af0e8394259f3f872629"
+  },
+  "production_profiles": {
+    "n1000": {
+      "paired_tasks": 20,
+      "n": [
+        1000
+      ]
+    },
+    "full": {
+      "paired_tasks": 80,
+      "n": [
+        500,
+        1000,
+        1500,
+        2000
+      ]
+    }
+  },
+  "production_sample_generation_per_method": 5000,
+  "default_production_replication_seeds": [
+    4000,
+    4001,
+    4002,
+    4003,
+    4004,
+    4005,
+    4006,
+    4007,
+    4008,
+    4009,
+    4010,
+    4011,
+    4012,
+    4013,
+    4014,
+    4015,
+    4016,
+    4017,
+    4018,
+    4019
+  ],
+  "scientific_sources_unchanged_from_pilot_and_sampler_diagnostic": true,
+  "executed_training_device": "cpu",
+  "actual_scc_gpu_execution_tested": false,
+  "scc_jobs_submitted": false,
+  "tests": [
+    "Full CPU training, cross-validation, selection, refitting, 400-step sampling, metric evaluation and strict summaries",
+    "Real interruption during generation, then validated reuse of completed fits/refit and sampling chunks",
+    "Completed task reused without CUDA initialization and without changing its result",
+    "13 mocked scheduler submission and environment checks",
+    "Independent review of scientific sources, seed mapping and device handling",
+    "Reference identity mismatch rejected by reporting and export",
+    "Lightweight results archive extracted and tables regenerated without raw arrays; six outputs reproduced byte-for-byte",
+    "Partial-study guards and independent summary arithmetic"
+  ],
+  "validation_record_sha256": {
+    "pilot_sampler_decision.json": "05173c2d63525168522a73c40a7179ba20c8c489a99d310dbc713e54471a3f10",
+    "submission_check.json": "97a068e090d188a82a220e69945be4722574bc607a93a974c7d65e0fa814d692",
+    "pilot_reference_table_audit.json": "d710273a5dbdb2da391880a655e2da6ceaa7eab291c194a51c0b30e8d36752a4",
+    "pilot_training_audit.json": "d8340e89f4d7fb9c79f80d4fe9c734d4561c9a4c69bcf3fffa75a91aa3aae046",
+    "summary_checks.json": "5b62f2f44ef7d0da33ae7d2b1e6ccb621b5af90a69f0f81e3d816f3a7b843fec",
+    "summary_reference_binding_checks.json": "863a910c32f1b78cc4eb2510512e83a210399df7f01dfadb1c6ef277e7ecb618",
+    "resume_check.json": "d7bff23a68afb7e78af7676db2f1a057d9d1981238a6c8a558fb5f74618e3c33",
+    "runner_review.json": "492a6e3fbb0eb73d56fc1ece0adcc0ad83a10955c06616a73359a97f84a202d0",
+    "pilot_sampler_audit.json": "5323e6f38fdf491ee7a153fc0c511c7c762840fa25d8d6c30a29db4f8ff74a27"
+  },
+  "source_sha256": {
+    "summarize.qsub": "cac9565b3f21df6644ef9669f71e7abb42818e193221c244fb22742ec0d783b9",
+    "study_config.py": "7dc5d95d70bb4c90ab011166d487bb93a4319ab9e144cd53270d4ac9ee5fb46a",
+    "summarize_results.py": "dff5b1696e97841c235599a013c0c0c41f26163fabcf5359b7eec981d14cd092",
+    "full_array.qsub": "ef4bb4cd791ea1341a723242ea5afeae3028ebe84abb578a5209a0a04f1d0594",
+    "prepare_reference.qsub": "3d9a51c08b49fc2c12134f7b1734e78e78841743c8656592107042650e4dafaf",
+    "preflight.py": "3b927b7ac030aa3af96d89bf737aa7102ab75fab80de25d5cca3c3cceebe92bb",
+    "common.py": "d16cbb08c6b6c90b0c3454e1a0f44e5d236d03657bd5b738787df585bdc92c83",
+    "scc_env.sh": "9460b6ecc7154c8f0778d9c38f5a3b6cd1d897361f4443d7b2dac8b14b26b0ec",
+    "submit_scc.sh": "144520b5388b548d74a33732e493f6feea187c9656a30f7adbceefd06bbafd4a",
+    "run_experiment.py": "8b2d309f4ac0c7a1559b711592a1ff14b15d2a6866afbc4ec00c6e5cfdaa75e2",
+    "prepare_reference.py": "3f54ece0eca634b7014f8bf34aa8a4f69187935163d5ac41524cc65a41eafa29",
+    "make_return_bundle.py": "fe12991cda80fe8f25032ab300e68e3af70a6ba54c81a786b37a74438a75a63e",
+    "experiment/training.py": "eebfdc10fb4388a86378fdec566b2b5748edfd5831d718d283fbd4a78744f9f5",
+    "experiment/models.py": "dae167cd082438f8d5eacbd823c3865ed6a6c80a0b6005faf293f1f1769eb302",
+    "experiment/reference.py": "fb6cc9cb960ad3a88af26e364a37c6737df2b56a8e1eb616d281377a5bfd294e",
+    "experiment/sampling.py": "f6b6731f625255fa8b2566689bd2c55cf19f18285aa8b99e3728438d66bfd769",
+    "experiment/evaluation.py": "9d5fbffa80900dbd22e075f31b25646b22a6c1c51ed0e3dc2f191d5be941abda",
+    "experiment/dgp.py": "522932cbcac6d1145bb027b3d4478d2fb9a5d8323ecbedfd14145a583f48fbe0",
+    "experiment/sampling_variants.py": "111b6664674c31115b8c40da9f6371fa10a04b71ede6ac352ea6de0218e0228c",
+    "verification/check_resume.py": "0cb6f2e330b1f71308161a5c72500bfbc84fb9b2eae67ed9d1eb287b6ef85fbf",
+    "verification/check_submission.py": "74da94e59f11c8317ae4434d670d8fc4724caf7a9183f99a567bd950f5d79f13"
+  }
+}

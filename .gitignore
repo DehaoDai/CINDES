@@ -22,9 +22,10 @@ reference/
 *.log
 *.pt
 *.pth
-response/bounded_tree_31/outputs/
-response/gaussian_compositional_7/outputs/
-!response/bounded_tree_31/**/*.csv
-!response/bounded_tree_31/**/*.jsonl
-!response/gaussian_compositional_7/**/*.csv
-!response/gaussian_compositional_7/reported_results/reference/
+supp/*/outputs/
+!supp/bounded_tree_31/**/*.csv
+!supp/bounded_tree_31/**/*.jsonl
+!supp/gaussian_compositional_7/**/*.csv
+!supp/gaussian_compositional_7/reported_results/reference/
+!supp/exponential_compositional_7/**/*.csv
+!supp/exponential_compositional_7/experiment/reference_score_table.npz

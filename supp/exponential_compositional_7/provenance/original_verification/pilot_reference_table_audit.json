@@ -1,0 +1,14 @@
+{
+  "reference_table_sha256": "c53dc4e1454fae7af28878d79283ec4909f28361f2b873125eec36998d8ec34b",
+  "checked_off_grid_points": 6148,
+  "max_absolute_error_vs_adaptive_quadrature": 0.00020351540383956035,
+  "median_absolute_error_vs_adaptive_quadrature": 3.289768457648279e-11,
+  "max_error_divided_by_one_plus_score_absolute": 9.85238945577808e-06,
+  "worst_absolute_error_y": -22.724885179491597,
+  "worst_absolute_error_t": 2.9785804762458143,
+  "known_reference_noisy_batch_max_absolute_error": 2.384185791015625e-07,
+  "known_reference_noisy_batch_rms_error": 5.806044844166575e-09,
+  "mean_seconds_per_256x7_reference_score_batch": 0.0021508433333413753,
+  "table_training_and_generation": "DSM uses the same interpolant in both; C posterior uses adaptive quadrature",
+  "out_of_domain": "whole affected rows fall back to adaptive quadrature"
+}

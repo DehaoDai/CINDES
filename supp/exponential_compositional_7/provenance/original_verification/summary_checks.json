@@ -1,0 +1,13 @@
+{
+  "status": "passed",
+  "actual_smoke_strict_summary": "passed",
+  "actual_smoke_bundle_crc_and_hashes": "passed",
+  "archived_export_exact_csv_latex_reproduction_count": 6,
+  "export_profile_inferred_without_flag": true,
+  "empty_strict_summary_rejected": true,
+  "empty_allow_partial_summary_and_bundle": "passed",
+  "partial_bundle_requires_explicit_flag": true,
+  "synthetic_arithmetic_check_scope": "Two paired records at each of two sample sizes; grouping, mean, ddof1 SD, SE, and paired differences checked against explicit arithmetic. Synthetic records were never scientific experiment outputs.",
+  "synthetic_arithmetic_checks": "passed",
+  "status_reads_metadata_without_creating_absent_root": true
+}

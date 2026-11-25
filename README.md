@@ -1,6 +1,6 @@
 # CINDES reproduction code
 
-Code to rerun the CINDES main-paper and reviewer-response experiments. The main-paper runners include the small Light Chamber sensor CSV but no saved results. The reviewer-response studies in [`response/`](response/) include recorded results, tables, and verification checks. New outputs go to ignored local paths. Full neural-network runs require substantial compute.
+Code to rerun the CINDES main-paper and supplementary reviewer-response experiments. The main-paper runners include the small Light Chamber sensor CSV but no saved results. The three studies in [`supp/`](supp/) include recorded results, tables, and verification material. New outputs go to ignored local paths. Full neural-network runs require substantial compute.
 
 ## Citation
 
@@ -112,12 +112,13 @@ python -m experiments.light_chamber_multi \
   --input-dir data/light_chamber/table5 --output-dir results/main/table5
 ```
 
-## Reviewer response — current experiments
+## Supplementary experiments
 
-See [`response/README.md`](response/README.md) for the experiment map, table-reproduction commands, and the distinctions between the current PDF tables and earlier draft prose. The current studies are:
+See [`supp/README.md`](supp/README.md) for the experiment map, verification commands, and the scope of each saved result set. The three studies are:
 
-- [`response/bounded_tree_31/`](response/bounded_tree_31/): bounded 31D binary-tree model, 20 paired replications at each of four sample sizes; saved results and Table 1.
-- [`response/gaussian_compositional_7/`](response/gaussian_compositional_7/): unbounded 7D Gaussian-tail compositional model, 20 paired replications at each of four sample sizes; saved results and Tables 2–3.
+- [`supp/bounded_tree_31/`](supp/bounded_tree_31/): bounded 31D binary-tree model, 20 paired replications at each of four sample sizes; Table 1.
+- [`supp/gaussian_compositional_7/`](supp/gaussian_compositional_7/): unbounded 7D sub-Gaussian-tail compositional model, 20 paired replications at each of four sample sizes; Table 2.
+- [`supp/exponential_compositional_7/`](supp/exponential_compositional_7/): positive 7D exponential-tail compositional model, 20 paired replications at each of four sample sizes; Table 3.
 
 ## Quick code check
 

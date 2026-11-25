@@ -1,0 +1,56 @@
+% Final tables from the user-provided SCC summary for exponential_full_v1.
+% 80/80 complete paired replications; 20 pairs at each sample size.
+% Requires \usepackage{booktabs}. Include this file with \input{...}.
+% Metric names are retained from the experiment output.
+% Boldface is descriptive and does not indicate statistical significance.
+
+\begin{table}[htbp]
+\centering
+\small
+\setlength{\tabcolsep}{4pt}
+\caption{Accuracy comparison for the exponential experiment using $20$ paired replications at each sample size ($80$ pairs in total). Entries are mean $\pm$ sample standard deviation. Boldface identifies the smaller mean for TV1, TV2, $H$-TV and $H$-$W_1$; for the signed LLgap, it identifies the mean closer to zero. These comparisons are descriptive.}
+\label{tab:cindes_exponential_accuracy}
+\begin{tabular}{rlccccc}
+\toprule
+$n$ & Method & TV1 & TV2 & LLgap (signed) & $H$-TV & $H$-$W_1$ \\
+\midrule
+500 & CINDES & $\mathbf{0.0352 \pm 0.0034}$ & $\mathbf{0.1251 \pm 0.0033}$ & $\mathbf{0.1093 \pm 0.1571}$ & $\mathbf{0.0939 \pm 0.0225}$ & $\mathbf{0.1527 \pm 0.0471}$ \\
+ & DSM & $0.0369 \pm 0.0041$ & $0.1298 \pm 0.0036$ & $0.2626 \pm 0.1884$ & $0.1417 \pm 0.0169$ & $0.2284 \pm 0.0411$ \\
+\addlinespace
+1000 & CINDES & $\mathbf{0.0317 \pm 0.0028}$ & $\mathbf{0.1202 \pm 0.0031}$ & $\mathbf{0.0841 \pm 0.1016}$ & $\mathbf{0.0751 \pm 0.0152}$ & $\mathbf{0.1128 \pm 0.0328}$ \\
+ & DSM & $0.0326 \pm 0.0033$ & $0.1237 \pm 0.0036$ & $0.1785 \pm 0.1331$ & $0.1110 \pm 0.0231$ & $0.1644 \pm 0.0433$ \\
+\addlinespace
+1500 & CINDES & $\mathbf{0.0298 \pm 0.0024}$ & $\mathbf{0.1186 \pm 0.0019}$ & $\mathbf{0.1065 \pm 0.1061}$ & $\mathbf{0.0629 \pm 0.0107}$ & $\mathbf{0.0821 \pm 0.0160}$ \\
+ & DSM & $0.0308 \pm 0.0039$ & $0.1199 \pm 0.0038$ & $0.1642 \pm 0.0993$ & $0.0936 \pm 0.0106$ & $0.1306 \pm 0.0178$ \\
+\addlinespace
+2000 & CINDES & $0.0283 \pm 0.0012$ & $\mathbf{0.1165 \pm 0.0019}$ & $\mathbf{0.0867 \pm 0.0796}$ & $\mathbf{0.0573 \pm 0.0097}$ & $\mathbf{0.0676 \pm 0.0144}$ \\
+ & DSM & $\mathbf{0.0279 \pm 0.0020}$ & $0.1178 \pm 0.0018$ & $0.1336 \pm 0.0868$ & $0.0824 \pm 0.0076$ & $0.1100 \pm 0.0134$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\small
+\setlength{\tabcolsep}{4pt}
+\caption{Recorded computation times in seconds for the exponential experiment, using $20$ paired replications at each sample size. Entries are mean $\pm$ sample standard deviation; boldface identifies the smaller mean. Final refit denotes training the selected model on all observations after cross-validation. Recorded total includes CV training, CV validation, final refitting, and generation. A sum of recorded stage times need not equal elapsed wall-clock time when work is performed in parallel.}
+\label{tab:cindes_exponential_runtime}
+\begin{tabular}{rlccccc}
+\toprule
+$n$ & Method & CV training & CV validation & Final refit & Generation & \shortstack{Recorded\\total} \\
+\midrule
+500 & CINDES & $\mathbf{85.69 \pm 19.28}$ & $4.76 \pm 1.06$ & $\mathbf{0.39 \pm 0.19}$ & $333.71 \pm 87.24$ & $424.54 \pm 105.85$ \\
+ & DSM & $174.12 \pm 23.26$ & $\mathbf{3.32 \pm 0.38}$ & $6.10 \pm 2.65$ & $\mathbf{25.71 \pm 5.28}$ & $\mathbf{209.25 \pm 30.28}$ \\
+\addlinespace
+1000 & CINDES & $\mathbf{110.31 \pm 12.42}$ & $3.97 \pm 0.57$ & $\mathbf{0.67 \pm 0.23}$ & $266.22 \pm 46.65$ & $381.16 \pm 59.59$ \\
+ & DSM & $267.55 \pm 26.32$ & $\mathbf{3.40 \pm 0.36}$ & $12.93 \pm 4.34$ & $\mathbf{21.75 \pm 3.25}$ & $\mathbf{305.64 \pm 31.07}$ \\
+\addlinespace
+1500 & CINDES & $\mathbf{145.88 \pm 13.62}$ & $3.92 \pm 0.47$ & $\mathbf{1.21 \pm 0.53}$ & $261.43 \pm 40.23$ & $\mathbf{412.44 \pm 53.71}$ \\
+ & DSM & $371.92 \pm 26.99$ & $\mathbf{3.72 \pm 0.29}$ & $18.95 \pm 4.83$ & $\mathbf{21.23 \pm 2.51}$ & $415.82 \pm 29.47$ \\
+\addlinespace
+2000 & CINDES & $\mathbf{211.01 \pm 8.31}$ & $\mathbf{4.03 \pm 0.30}$ & $\mathbf{2.45 \pm 1.70}$ & $250.92 \pm 12.39$ & $\mathbf{468.42 \pm 19.12}$ \\
+ & DSM & $526.48 \pm 15.00$ & $4.22 \pm 0.10$ & $31.00 \pm 5.31$ & $\mathbf{20.74 \pm 0.57}$ & $582.44 \pm 16.97$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+

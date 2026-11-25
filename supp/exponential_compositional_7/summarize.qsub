@@ -1,0 +1,31 @@
+#!/bin/bash -l
+# Arguments: output root, profile, activation script, allow intentional partial study.
+#$ -cwd
+#$ -N cindes_exp_tab
+#$ -j y
+#$ -pe omp 2
+#$ -l mem_per_core=4G
+#$ -l h_rt=01:00:00
+set -eo pipefail
+: "${SGE_O_WORKDIR:?Submit from the package directory.}"
+cd "$SGE_O_WORKDIR"
+output_root="${1:?Missing output root; use submit_scc.sh.}"
+profile="${2:?Missing study profile.}"
+allow_partial="${4:-0}"
+source ./scc_env.sh "${3:--}"
+[[ "$allow_partial" == 0 || "$allow_partial" == 1 ]] || { printf 'Invalid partial-summary flag.\n' >&2; exit 2; }
+if [[ "$allow_partial" == 1 ]]; then
+    python -u summarize_results.py --root "$output_root" --profile "$profile" --allow-partial
+    python -u make_return_bundle.py --root "$output_root" --profile "$profile" --allow-partial
+else
+    if python -u summarize_results.py --root "$output_root" --profile "$profile"; then
+        python -u make_return_bundle.py --root "$output_root" --profile "$profile"
+    else
+        summary_status=$?
+        printf 'The complete study did not validate. Saving partial results and diagnostics.\n' >&2
+        python -u summarize_results.py --root "$output_root" --profile "$profile" --allow-partial
+        python -u make_return_bundle.py --root "$output_root" --profile "$profile" --allow-partial
+        exit "$summary_status"
+    fi
+fi
+date

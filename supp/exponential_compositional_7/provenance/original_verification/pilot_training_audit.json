@@ -1,0 +1,70 @@
+{
+  "passed": true,
+  "scope": "All paired training, selection, and refitting records",
+  "fitting_manifest_sha256": "95af724af2978c777588fcf5f87443a0c02dfb93e7899bb282d521d612cb1493",
+  "source_sha256": {
+    "models.py": "dae167cd082438f8d5eacbd823c3865ed6a6c80a0b6005faf293f1f1769eb302",
+    "reference.py": "fb6cc9cb960ad3a88af26e364a37c6737df2b56a8e1eb616d281377a5bfd294e",
+    "reference_score_table.npz": "c53dc4e1454fae7af28878d79283ec4909f28361f2b873125eec36998d8ec34b",
+    "training.py": "eebfdc10fb4388a86378fdec566b2b5748edfd5831d718d283fbd4a78744f9f5"
+  },
+  "cv_count": 108,
+  "refit_count": 6,
+  "selection": [
+    {
+      "seed": 3000,
+      "family": "cindes_plain",
+      "lambda": 1.0,
+      "selected_epochs": 200.0,
+      "refit_updates": 800,
+      "full_cosine_horizon_updates": 8000,
+      "validation_loss": -0.29475587999022146
+    },
+    {
+      "seed": 3000,
+      "family": "dsm_reference",
+      "lambda": 0.1,
+      "selected_epochs": 1620.0,
+      "refit_updates": 6480,
+      "full_cosine_horizon_updates": 8000,
+      "validation_loss": 0.7236357250641376
+    },
+    {
+      "seed": 3001,
+      "family": "cindes_plain",
+      "lambda": 1.0,
+      "selected_epochs": 200.0,
+      "refit_updates": 800,
+      "full_cosine_horizon_updates": 8000,
+      "validation_loss": -0.25078444215760015
+    },
+    {
+      "seed": 3001,
+      "family": "dsm_reference",
+      "lambda": 0.1,
+      "selected_epochs": 980.0,
+      "refit_updates": 3920,
+      "full_cosine_horizon_updates": 8000,
+      "validation_loss": 0.7245579063012556
+    },
+    {
+      "seed": 3002,
+      "family": "cindes_plain",
+      "lambda": 1.0,
+      "selected_epochs": 220.0,
+      "refit_updates": 880,
+      "full_cosine_horizon_updates": 8000,
+      "validation_loss": -0.26558340663229996
+    },
+    {
+      "seed": 3002,
+      "family": "dsm_reference",
+      "lambda": 0.1,
+      "selected_epochs": 1160.0,
+      "refit_updates": 4640,
+      "full_cosine_horizon_updates": 8000,
+      "validation_loss": 0.7154205401259278
+    }
+  ],
+  "paired_schedule_groups": 9
+}

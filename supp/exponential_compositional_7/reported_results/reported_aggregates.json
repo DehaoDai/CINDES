@@ -1,0 +1,688 @@
+{
+  "accuracy": [
+    {
+      "n": 500,
+      "method": "cindes",
+      "metric": "tv1",
+      "n_rep": 20,
+      "mean": 0.035150581,
+      "sd": 0.00337743732,
+      "se": 0.000755217943
+    },
+    {
+      "n": 500,
+      "method": "cindes",
+      "metric": "tv2",
+      "n_rep": 20,
+      "mean": 0.12510523,
+      "sd": 0.00325000017,
+      "se": 0.00072672213
+    },
+    {
+      "n": 500,
+      "method": "cindes",
+      "metric": "llgap",
+      "n_rep": 20,
+      "mean": 0.109265442,
+      "sd": 0.15708776,
+      "se": 0.0351258911
+    },
+    {
+      "n": 500,
+      "method": "cindes",
+      "metric": "h_tv",
+      "n_rep": 20,
+      "mean": 0.0939246037,
+      "sd": 0.0224594405,
+      "se": 0.00502208358
+    },
+    {
+      "n": 500,
+      "method": "cindes",
+      "metric": "h_w1",
+      "n_rep": 20,
+      "mean": 0.152694409,
+      "sd": 0.0470972263,
+      "se": 0.01053126
+    },
+    {
+      "n": 500,
+      "method": "dsm",
+      "metric": "tv1",
+      "n_rep": 20,
+      "mean": 0.0369002023,
+      "sd": 0.00406795191,
+      "se": 0.000909621699
+    },
+    {
+      "n": 500,
+      "method": "dsm",
+      "metric": "tv2",
+      "n_rep": 20,
+      "mean": 0.129751263,
+      "sd": 0.00363536962,
+      "se": 0.00081289336
+    },
+    {
+      "n": 500,
+      "method": "dsm",
+      "metric": "llgap",
+      "n_rep": 20,
+      "mean": 0.262635003,
+      "sd": 0.18837976,
+      "se": 0.0421229949
+    },
+    {
+      "n": 500,
+      "method": "dsm",
+      "metric": "h_tv",
+      "n_rep": 20,
+      "mean": 0.141696267,
+      "sd": 0.0169054141,
+      "se": 0.00378016552
+    },
+    {
+      "n": 500,
+      "method": "dsm",
+      "metric": "h_w1",
+      "n_rep": 20,
+      "mean": 0.228406137,
+      "sd": 0.0411003067,
+      "se": 0.00919030797
+    },
+    {
+      "n": 1000,
+      "method": "cindes",
+      "metric": "tv1",
+      "n_rep": 20,
+      "mean": 0.0317296564,
+      "sd": 0.00278747095,
+      "se": 0.000623297452
+    },
+    {
+      "n": 1000,
+      "method": "cindes",
+      "metric": "tv2",
+      "n_rep": 20,
+      "mean": 0.120222325,
+      "sd": 0.0030571165,
+      "se": 0.000683592031
+    },
+    {
+      "n": 1000,
+      "method": "cindes",
+      "metric": "llgap",
+      "n_rep": 20,
+      "mean": 0.0840665539,
+      "sd": 0.101577794,
+      "se": 0.0227134852
+    },
+    {
+      "n": 1000,
+      "method": "cindes",
+      "metric": "h_tv",
+      "n_rep": 20,
+      "mean": 0.07506754,
+      "sd": 0.0151613444,
+      "se": 0.00339017967
+    },
+    {
+      "n": 1000,
+      "method": "cindes",
+      "metric": "h_w1",
+      "n_rep": 20,
+      "mean": 0.112754677,
+      "sd": 0.0327796694,
+      "se": 0.00732975691
+    },
+    {
+      "n": 1000,
+      "method": "dsm",
+      "metric": "tv1",
+      "n_rep": 20,
+      "mean": 0.0326490191,
+      "sd": 0.00326705322,
+      "se": 0.000730535308
+    },
+    {
+      "n": 1000,
+      "method": "dsm",
+      "metric": "tv2",
+      "n_rep": 20,
+      "mean": 0.123662031,
+      "sd": 0.00364697922,
+      "se": 0.000815489345
+    },
+    {
+      "n": 1000,
+      "method": "dsm",
+      "metric": "llgap",
+      "n_rep": 20,
+      "mean": 0.178509695,
+      "sd": 0.133147026,
+      "se": 0.0297725801
+    },
+    {
+      "n": 1000,
+      "method": "dsm",
+      "metric": "h_tv",
+      "n_rep": 20,
+      "mean": 0.110990796,
+      "sd": 0.0230544576,
+      "se": 0.00515513344
+    },
+    {
+      "n": 1000,
+      "method": "dsm",
+      "metric": "h_w1",
+      "n_rep": 20,
+      "mean": 0.164437483,
+      "sd": 0.0433461224,
+      "se": 0.00969248763
+    },
+    {
+      "n": 1500,
+      "method": "cindes",
+      "metric": "tv1",
+      "n_rep": 20,
+      "mean": 0.0297957321,
+      "sd": 0.00239457416,
+      "se": 0.000535443059
+    },
+    {
+      "n": 1500,
+      "method": "cindes",
+      "metric": "tv2",
+      "n_rep": 20,
+      "mean": 0.118573726,
+      "sd": 0.00193950669,
+      "se": 0.00043368688
+    },
+    {
+      "n": 1500,
+      "method": "cindes",
+      "metric": "llgap",
+      "n_rep": 20,
+      "mean": 0.106500719,
+      "sd": 0.106107074,
+      "se": 0.023726263
+    },
+    {
+      "n": 1500,
+      "method": "cindes",
+      "metric": "h_tv",
+      "n_rep": 20,
+      "mean": 0.0629470317,
+      "sd": 0.0107470871,
+      "se": 0.00240312173
+    },
+    {
+      "n": 1500,
+      "method": "cindes",
+      "metric": "h_w1",
+      "n_rep": 20,
+      "mean": 0.0820571326,
+      "sd": 0.0160103096,
+      "se": 0.00358001407
+    },
+    {
+      "n": 1500,
+      "method": "dsm",
+      "metric": "tv1",
+      "n_rep": 20,
+      "mean": 0.0307876199,
+      "sd": 0.00390893008,
+      "se": 0.000874063338
+    },
+    {
+      "n": 1500,
+      "method": "dsm",
+      "metric": "tv2",
+      "n_rep": 20,
+      "mean": 0.119937311,
+      "sd": 0.00375484739,
+      "se": 0.000839609401
+    },
+    {
+      "n": 1500,
+      "method": "dsm",
+      "metric": "llgap",
+      "n_rep": 20,
+      "mean": 0.164165136,
+      "sd": 0.0993047719,
+      "se": 0.0222052221
+    },
+    {
+      "n": 1500,
+      "method": "dsm",
+      "metric": "h_tv",
+      "n_rep": 20,
+      "mean": 0.093555584,
+      "sd": 0.0105715872,
+      "se": 0.00236387875
+    },
+    {
+      "n": 1500,
+      "method": "dsm",
+      "metric": "h_w1",
+      "n_rep": 20,
+      "mean": 0.130635676,
+      "sd": 0.0177945686,
+      "se": 0.00397898651
+    },
+    {
+      "n": 2000,
+      "method": "cindes",
+      "metric": "tv1",
+      "n_rep": 20,
+      "mean": 0.0282725378,
+      "sd": 0.00121827138,
+      "se": 0.000272413762
+    },
+    {
+      "n": 2000,
+      "method": "cindes",
+      "metric": "tv2",
+      "n_rep": 20,
+      "mean": 0.11645121,
+      "sd": 0.00187081569,
+      "se": 0.000418327106
+    },
+    {
+      "n": 2000,
+      "method": "cindes",
+      "metric": "llgap",
+      "n_rep": 20,
+      "mean": 0.0867195064,
+      "sd": 0.0795690604,
+      "se": 0.0177921828
+    },
+    {
+      "n": 2000,
+      "method": "cindes",
+      "metric": "h_tv",
+      "n_rep": 20,
+      "mean": 0.0573455145,
+      "sd": 0.00973525532,
+      "se": 0.00217686927
+    },
+    {
+      "n": 2000,
+      "method": "cindes",
+      "metric": "h_w1",
+      "n_rep": 20,
+      "mean": 0.0676192537,
+      "sd": 0.0144065816,
+      "se": 0.00322140958
+    },
+    {
+      "n": 2000,
+      "method": "dsm",
+      "metric": "tv1",
+      "n_rep": 20,
+      "mean": 0.027932111,
+      "sd": 0.00195055949,
+      "se": 0.00043615836
+    },
+    {
+      "n": 2000,
+      "method": "dsm",
+      "metric": "tv2",
+      "n_rep": 20,
+      "mean": 0.117783552,
+      "sd": 0.00176215484,
+      "se": 0.000394029802
+    },
+    {
+      "n": 2000,
+      "method": "dsm",
+      "metric": "llgap",
+      "n_rep": 20,
+      "mean": 0.133572114,
+      "sd": 0.086754359,
+      "se": 0.0193988644
+    },
+    {
+      "n": 2000,
+      "method": "dsm",
+      "metric": "h_tv",
+      "n_rep": 20,
+      "mean": 0.0823961032,
+      "sd": 0.00757179012,
+      "se": 0.00169310374
+    },
+    {
+      "n": 2000,
+      "method": "dsm",
+      "metric": "h_w1",
+      "n_rep": 20,
+      "mean": 0.110016084,
+      "sd": 0.0133506952,
+      "se": 0.00298530619
+    }
+  ],
+  "runtime": [
+    {
+      "n": 500,
+      "method": "cindes",
+      "metric": "cv_training_seconds",
+      "n_rep": 20,
+      "mean": 85.688,
+      "sd": 19.282
+    },
+    {
+      "n": 500,
+      "method": "cindes",
+      "metric": "cv_validation_seconds",
+      "n_rep": 20,
+      "mean": 4.758,
+      "sd": 1.055
+    },
+    {
+      "n": 500,
+      "method": "cindes",
+      "metric": "refit_training_seconds",
+      "n_rep": 20,
+      "mean": 0.388,
+      "sd": 0.185
+    },
+    {
+      "n": 500,
+      "method": "cindes",
+      "metric": "generation_seconds",
+      "n_rep": 20,
+      "mean": 333.707,
+      "sd": 87.239
+    },
+    {
+      "n": 500,
+      "method": "cindes",
+      "metric": "training_and_generation_seconds",
+      "n_rep": 20,
+      "mean": 424.541,
+      "sd": 105.851
+    },
+    {
+      "n": 500,
+      "method": "dsm",
+      "metric": "cv_training_seconds",
+      "n_rep": 20,
+      "mean": 174.121,
+      "sd": 23.263
+    },
+    {
+      "n": 500,
+      "method": "dsm",
+      "metric": "cv_validation_seconds",
+      "n_rep": 20,
+      "mean": 3.318,
+      "sd": 0.377
+    },
+    {
+      "n": 500,
+      "method": "dsm",
+      "metric": "refit_training_seconds",
+      "n_rep": 20,
+      "mean": 6.103,
+      "sd": 2.647
+    },
+    {
+      "n": 500,
+      "method": "dsm",
+      "metric": "generation_seconds",
+      "n_rep": 20,
+      "mean": 25.708,
+      "sd": 5.283
+    },
+    {
+      "n": 500,
+      "method": "dsm",
+      "metric": "training_and_generation_seconds",
+      "n_rep": 20,
+      "mean": 209.25,
+      "sd": 30.284
+    },
+    {
+      "n": 1000,
+      "method": "cindes",
+      "metric": "cv_training_seconds",
+      "n_rep": 20,
+      "mean": 110.308,
+      "sd": 12.421
+    },
+    {
+      "n": 1000,
+      "method": "cindes",
+      "metric": "cv_validation_seconds",
+      "n_rep": 20,
+      "mean": 3.966,
+      "sd": 0.566
+    },
+    {
+      "n": 1000,
+      "method": "cindes",
+      "metric": "refit_training_seconds",
+      "n_rep": 20,
+      "mean": 0.665,
+      "sd": 0.225
+    },
+    {
+      "n": 1000,
+      "method": "cindes",
+      "metric": "generation_seconds",
+      "n_rep": 20,
+      "mean": 266.22,
+      "sd": 46.65
+    },
+    {
+      "n": 1000,
+      "method": "cindes",
+      "metric": "training_and_generation_seconds",
+      "n_rep": 20,
+      "mean": 381.16,
+      "sd": 59.587
+    },
+    {
+      "n": 1000,
+      "method": "dsm",
+      "metric": "cv_training_seconds",
+      "n_rep": 20,
+      "mean": 267.55,
+      "sd": 26.319
+    },
+    {
+      "n": 1000,
+      "method": "dsm",
+      "metric": "cv_validation_seconds",
+      "n_rep": 20,
+      "mean": 3.403,
+      "sd": 0.356
+    },
+    {
+      "n": 1000,
+      "method": "dsm",
+      "metric": "refit_training_seconds",
+      "n_rep": 20,
+      "mean": 12.933,
+      "sd": 4.341
+    },
+    {
+      "n": 1000,
+      "method": "dsm",
+      "metric": "generation_seconds",
+      "n_rep": 20,
+      "mean": 21.753,
+      "sd": 3.25
+    },
+    {
+      "n": 1000,
+      "method": "dsm",
+      "metric": "training_and_generation_seconds",
+      "n_rep": 20,
+      "mean": 305.639,
+      "sd": 31.07
+    },
+    {
+      "n": 1500,
+      "method": "cindes",
+      "metric": "cv_training_seconds",
+      "n_rep": 20,
+      "mean": 145.876,
+      "sd": 13.621
+    },
+    {
+      "n": 1500,
+      "method": "cindes",
+      "metric": "cv_validation_seconds",
+      "n_rep": 20,
+      "mean": 3.918,
+      "sd": 0.469
+    },
+    {
+      "n": 1500,
+      "method": "cindes",
+      "metric": "refit_training_seconds",
+      "n_rep": 20,
+      "mean": 1.207,
+      "sd": 0.527
+    },
+    {
+      "n": 1500,
+      "method": "cindes",
+      "metric": "generation_seconds",
+      "n_rep": 20,
+      "mean": 261.434,
+      "sd": 40.229
+    },
+    {
+      "n": 1500,
+      "method": "cindes",
+      "metric": "training_and_generation_seconds",
+      "n_rep": 20,
+      "mean": 412.436,
+      "sd": 53.713
+    },
+    {
+      "n": 1500,
+      "method": "dsm",
+      "metric": "cv_training_seconds",
+      "n_rep": 20,
+      "mean": 371.919,
+      "sd": 26.993
+    },
+    {
+      "n": 1500,
+      "method": "dsm",
+      "metric": "cv_validation_seconds",
+      "n_rep": 20,
+      "mean": 3.722,
+      "sd": 0.285
+    },
+    {
+      "n": 1500,
+      "method": "dsm",
+      "metric": "refit_training_seconds",
+      "n_rep": 20,
+      "mean": 18.952,
+      "sd": 4.83
+    },
+    {
+      "n": 1500,
+      "method": "dsm",
+      "metric": "generation_seconds",
+      "n_rep": 20,
+      "mean": 21.227,
+      "sd": 2.511
+    },
+    {
+      "n": 1500,
+      "method": "dsm",
+      "metric": "training_and_generation_seconds",
+      "n_rep": 20,
+      "mean": 415.82,
+      "sd": 29.466
+    },
+    {
+      "n": 2000,
+      "method": "cindes",
+      "metric": "cv_training_seconds",
+      "n_rep": 20,
+      "mean": 211.013,
+      "sd": 8.31
+    },
+    {
+      "n": 2000,
+      "method": "cindes",
+      "metric": "cv_validation_seconds",
+      "n_rep": 20,
+      "mean": 4.033,
+      "sd": 0.302
+    },
+    {
+      "n": 2000,
+      "method": "cindes",
+      "metric": "refit_training_seconds",
+      "n_rep": 20,
+      "mean": 2.453,
+      "sd": 1.695
+    },
+    {
+      "n": 2000,
+      "method": "cindes",
+      "metric": "generation_seconds",
+      "n_rep": 20,
+      "mean": 250.919,
+      "sd": 12.386
+    },
+    {
+      "n": 2000,
+      "method": "cindes",
+      "metric": "training_and_generation_seconds",
+      "n_rep": 20,
+      "mean": 468.418,
+      "sd": 19.118
+    },
+    {
+      "n": 2000,
+      "method": "dsm",
+      "metric": "cv_training_seconds",
+      "n_rep": 20,
+      "mean": 526.478,
+      "sd": 14.995
+    },
+    {
+      "n": 2000,
+      "method": "dsm",
+      "metric": "cv_validation_seconds",
+      "n_rep": 20,
+      "mean": 4.217,
+      "sd": 0.101
+    },
+    {
+      "n": 2000,
+      "method": "dsm",
+      "metric": "refit_training_seconds",
+      "n_rep": 20,
+      "mean": 31.001,
+      "sd": 5.306
+    },
+    {
+      "n": 2000,
+      "method": "dsm",
+      "metric": "generation_seconds",
+      "n_rep": 20,
+      "mean": 20.742,
+      "sd": 0.573
+    },
+    {
+      "n": 2000,
+      "method": "dsm",
+      "metric": "training_and_generation_seconds",
+      "n_rep": 20,
+      "mean": 582.438,
+      "sd": 16.966
+    }
+  ],
+  "accuracyText": "500 cindes tv1 20 0.035150581 0.00337743732 0.000755217943\n500 cindes tv2 20 0.12510523 0.00325000017 0.00072672213\n500 cindes llgap 20 0.109265442 0.15708776 0.0351258911\n500 cindes h_tv 20 0.0939246037 0.0224594405 0.00502208358\n500 cindes h_w1 20 0.152694409 0.0470972263 0.01053126\n500 dsm tv1 20 0.0369002023 0.00406795191 0.000909621699\n500 dsm tv2 20 0.129751263 0.00363536962 0.00081289336\n500 dsm llgap 20 0.262635003 0.18837976 0.0421229949\n500 dsm h_tv 20 0.141696267 0.0169054141 0.00378016552\n500 dsm h_w1 20 0.228406137 0.0411003067 0.00919030797\n1000 cindes tv1 20 0.0317296564 0.00278747095 0.000623297452\n1000 cindes tv2 20 0.120222325 0.0030571165 0.000683592031\n1000 cindes llgap 20 0.0840665539 0.101577794 0.0227134852\n1000 cindes h_tv 20 0.07506754 0.0151613444 0.00339017967\n1000 cindes h_w1 20 0.112754677 0.0327796694 0.00732975691\n1000 dsm tv1 20 0.0326490191 0.00326705322 0.000730535308\n1000 dsm tv2 20 0.123662031 0.00364697922 0.000815489345\n1000 dsm llgap 20 0.178509695 0.133147026 0.0297725801\n1000 dsm h_tv 20 0.110990796 0.0230544576 0.00515513344\n1000 dsm h_w1 20 0.164437483 0.0433461224 0.00969248763\n1500 cindes tv1 20 0.0297957321 0.00239457416 0.000535443059\n1500 cindes tv2 20 0.118573726 0.00193950669 0.00043368688\n1500 cindes llgap 20 0.106500719 0.106107074 0.023726263\n1500 cindes h_tv 20 0.0629470317 0.0107470871 0.00240312173\n1500 cindes h_w1 20 0.0820571326 0.0160103096 0.00358001407\n1500 dsm tv1 20 0.0307876199 0.00390893008 0.000874063338\n1500 dsm tv2 20 0.119937311 0.00375484739 0.000839609401\n1500 dsm llgap 20 0.164165136 0.0993047719 0.0222052221\n1500 dsm h_tv 20 0.093555584 0.0105715872 0.00236387875\n1500 dsm h_w1 20 0.130635676 0.0177945686 0.00397898651\n2000 cindes tv1 20 0.0282725378 0.00121827138 0.000272413762\n2000 cindes tv2 20 0.11645121 0.00187081569 0.000418327106\n2000 cindes llgap 20 0.0867195064 0.0795690604 0.0177921828\n2000 cindes h_tv 20 0.0573455145 0.00973525532 0.00217686927\n2000 cindes h_w1 20 0.0676192537 0.0144065816 0.00322140958\n2000 dsm tv1 20 0.027932111 0.00195055949 0.00043615836\n2000 dsm tv2 20 0.117783552 0.00176215484 0.000394029802\n2000 dsm llgap 20 0.133572114 0.086754359 0.0193988644\n2000 dsm h_tv 20 0.0823961032 0.00757179012 0.00169310374\n2000 dsm h_w1 20 0.110016084 0.0133506952 0.00298530619",
+  "runtimeText": "500 cindes cv_training_seconds 85.688 19.282\n500 cindes cv_validation_seconds 4.758 1.055\n500 cindes refit_training_seconds 0.388 0.185\n500 cindes generation_seconds 333.707 87.239\n500 cindes training_and_generation_seconds 424.541 105.851\n500 dsm cv_training_seconds 174.121 23.263\n500 dsm cv_validation_seconds 3.318 0.377\n500 dsm refit_training_seconds 6.103 2.647\n500 dsm generation_seconds 25.708 5.283\n500 dsm training_and_generation_seconds 209.250 30.284\n1000 cindes cv_training_seconds 110.308 12.421\n1000 cindes cv_validation_seconds 3.966 0.566\n1000 cindes refit_training_seconds 0.665 0.225\n1000 cindes generation_seconds 266.220 46.650\n1000 cindes training_and_generation_seconds 381.160 59.587\n1000 dsm cv_training_seconds 267.550 26.319\n1000 dsm cv_validation_seconds 3.403 0.356\n1000 dsm refit_training_seconds 12.933 4.341\n1000 dsm generation_seconds 21.753 3.250\n1000 dsm training_and_generation_seconds 305.639 31.070\n1500 cindes cv_training_seconds 145.876 13.621\n1500 cindes cv_validation_seconds 3.918 0.469\n1500 cindes refit_training_seconds 1.207 0.527\n1500 cindes generation_seconds 261.434 40.229\n1500 cindes training_and_generation_seconds 412.436 53.713\n1500 dsm cv_training_seconds 371.919 26.993\n1500 dsm cv_validation_seconds 3.722 0.285\n1500 dsm refit_training_seconds 18.952 4.830\n1500 dsm generation_seconds 21.227 2.511\n1500 dsm training_and_generation_seconds 415.820 29.466\n2000 cindes cv_training_seconds 211.013 8.310\n2000 cindes cv_validation_seconds 4.033 0.302\n2000 cindes refit_training_seconds 2.453 1.695\n2000 cindes generation_seconds 250.919 12.386\n2000 cindes training_and_generation_seconds 468.418 19.118\n2000 dsm cv_training_seconds 526.478 14.995\n2000 dsm cv_validation_seconds 4.217 0.101\n2000 dsm refit_training_seconds 31.001 5.306\n2000 dsm generation_seconds 20.742 0.573\n2000 dsm training_and_generation_seconds 582.438 16.966"
+}

@@ -1,0 +1,26 @@
+#!/bin/bash -l
+# One task fits and evaluates both methods using the same dataset and GPU.
+# Submit through submit_scc.sh; command-line -t selects the profile task range.
+#$ -cwd
+#$ -N cindes_exp
+#$ -j y
+#$ -pe omp 4
+#$ -l mem_per_core=4G
+#$ -l gpus=1
+#$ -l gpu_c=8.0
+#$ -l gpu_memory=16G
+#$ -l h_rt=12:00:00
+#$ -t 1-20
+#$ -tc 2
+set -eo pipefail
+: "${SGE_O_WORKDIR:?Submit from the package directory.}"
+cd "$SGE_O_WORKDIR"
+output_root="${1:?Missing output root; use submit_scc.sh.}"
+profile="${2:?Missing study profile.}"
+source ./scc_env.sh "${3:--}"
+: "${SGE_TASK_ID:?This script must be submitted as an array job.}"
+[[ "$SGE_TASK_ID" =~ ^[1-9][0-9]*$ ]] || { printf 'Invalid array task ID.\n' >&2; exit 2; }
+python -u run_experiment.py --root "$output_root" --profile "$profile" \
+    --task-id "$SGE_TASK_ID" --device cuda
+date
+

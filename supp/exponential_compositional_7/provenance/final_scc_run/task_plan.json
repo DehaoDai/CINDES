@@ -1,0 +1,642 @@
+[
+  {
+    "task_id": 1,
+    "n": 500,
+    "seed": 4000,
+    "fit_seed": 50004000,
+    "data_seed": 50004000,
+    "fold_seed": 50704000
+  },
+  {
+    "task_id": 2,
+    "n": 500,
+    "seed": 4001,
+    "fit_seed": 50004001,
+    "data_seed": 50004001,
+    "fold_seed": 50704001
+  },
+  {
+    "task_id": 3,
+    "n": 500,
+    "seed": 4002,
+    "fit_seed": 50004002,
+    "data_seed": 50004002,
+    "fold_seed": 50704002
+  },
+  {
+    "task_id": 4,
+    "n": 500,
+    "seed": 4003,
+    "fit_seed": 50004003,
+    "data_seed": 50004003,
+    "fold_seed": 50704003
+  },
+  {
+    "task_id": 5,
+    "n": 500,
+    "seed": 4004,
+    "fit_seed": 50004004,
+    "data_seed": 50004004,
+    "fold_seed": 50704004
+  },
+  {
+    "task_id": 6,
+    "n": 500,
+    "seed": 4005,
+    "fit_seed": 50004005,
+    "data_seed": 50004005,
+    "fold_seed": 50704005
+  },
+  {
+    "task_id": 7,
+    "n": 500,
+    "seed": 4006,
+    "fit_seed": 50004006,
+    "data_seed": 50004006,
+    "fold_seed": 50704006
+  },
+  {
+    "task_id": 8,
+    "n": 500,
+    "seed": 4007,
+    "fit_seed": 50004007,
+    "data_seed": 50004007,
+    "fold_seed": 50704007
+  },
+  {
+    "task_id": 9,
+    "n": 500,
+    "seed": 4008,
+    "fit_seed": 50004008,
+    "data_seed": 50004008,
+    "fold_seed": 50704008
+  },
+  {
+    "task_id": 10,
+    "n": 500,
+    "seed": 4009,
+    "fit_seed": 50004009,
+    "data_seed": 50004009,
+    "fold_seed": 50704009
+  },
+  {
+    "task_id": 11,
+    "n": 500,
+    "seed": 4010,
+    "fit_seed": 50004010,
+    "data_seed": 50004010,
+    "fold_seed": 50704010
+  },
+  {
+    "task_id": 12,
+    "n": 500,
+    "seed": 4011,
+    "fit_seed": 50004011,
+    "data_seed": 50004011,
+    "fold_seed": 50704011
+  },
+  {
+    "task_id": 13,
+    "n": 500,
+    "seed": 4012,
+    "fit_seed": 50004012,
+    "data_seed": 50004012,
+    "fold_seed": 50704012
+  },
+  {
+    "task_id": 14,
+    "n": 500,
+    "seed": 4013,
+    "fit_seed": 50004013,
+    "data_seed": 50004013,
+    "fold_seed": 50704013
+  },
+  {
+    "task_id": 15,
+    "n": 500,
+    "seed": 4014,
+    "fit_seed": 50004014,
+    "data_seed": 50004014,
+    "fold_seed": 50704014
+  },
+  {
+    "task_id": 16,
+    "n": 500,
+    "seed": 4015,
+    "fit_seed": 50004015,
+    "data_seed": 50004015,
+    "fold_seed": 50704015
+  },
+  {
+    "task_id": 17,
+    "n": 500,
+    "seed": 4016,
+    "fit_seed": 50004016,
+    "data_seed": 50004016,
+    "fold_seed": 50704016
+  },
+  {
+    "task_id": 18,
+    "n": 500,
+    "seed": 4017,
+    "fit_seed": 50004017,
+    "data_seed": 50004017,
+    "fold_seed": 50704017
+  },
+  {
+    "task_id": 19,
+    "n": 500,
+    "seed": 4018,
+    "fit_seed": 50004018,
+    "data_seed": 50004018,
+    "fold_seed": 50704018
+  },
+  {
+    "task_id": 20,
+    "n": 500,
+    "seed": 4019,
+    "fit_seed": 50004019,
+    "data_seed": 50004019,
+    "fold_seed": 50704019
+  },
+  {
+    "task_id": 21,
+    "n": 1000,
+    "seed": 4000,
+    "fit_seed": 100004000,
+    "data_seed": 100004000,
+    "fold_seed": 100704000
+  },
+  {
+    "task_id": 22,
+    "n": 1000,
+    "seed": 4001,
+    "fit_seed": 100004001,
+    "data_seed": 100004001,
+    "fold_seed": 100704001
+  },
+  {
+    "task_id": 23,
+    "n": 1000,
+    "seed": 4002,
+    "fit_seed": 100004002,
+    "data_seed": 100004002,
+    "fold_seed": 100704002
+  },
+  {
+    "task_id": 24,
+    "n": 1000,
+    "seed": 4003,
+    "fit_seed": 100004003,
+    "data_seed": 100004003,
+    "fold_seed": 100704003
+  },
+  {
+    "task_id": 25,
+    "n": 1000,
+    "seed": 4004,
+    "fit_seed": 100004004,
+    "data_seed": 100004004,
+    "fold_seed": 100704004
+  },
+  {
+    "task_id": 26,
+    "n": 1000,
+    "seed": 4005,
+    "fit_seed": 100004005,
+    "data_seed": 100004005,
+    "fold_seed": 100704005
+  },
+  {
+    "task_id": 27,
+    "n": 1000,
+    "seed": 4006,
+    "fit_seed": 100004006,
+    "data_seed": 100004006,
+    "fold_seed": 100704006
+  },
+  {
+    "task_id": 28,
+    "n": 1000,
+    "seed": 4007,
+    "fit_seed": 100004007,
+    "data_seed": 100004007,
+    "fold_seed": 100704007
+  },
+  {
+    "task_id": 29,
+    "n": 1000,
+    "seed": 4008,
+    "fit_seed": 100004008,
+    "data_seed": 100004008,
+    "fold_seed": 100704008
+  },
+  {
+    "task_id": 30,
+    "n": 1000,
+    "seed": 4009,
+    "fit_seed": 100004009,
+    "data_seed": 100004009,
+    "fold_seed": 100704009
+  },
+  {
+    "task_id": 31,
+    "n": 1000,
+    "seed": 4010,
+    "fit_seed": 100004010,
+    "data_seed": 100004010,
+    "fold_seed": 100704010
+  },
+  {
+    "task_id": 32,
+    "n": 1000,
+    "seed": 4011,
+    "fit_seed": 100004011,
+    "data_seed": 100004011,
+    "fold_seed": 100704011
+  },
+  {
+    "task_id": 33,
+    "n": 1000,
+    "seed": 4012,
+    "fit_seed": 100004012,
+    "data_seed": 100004012,
+    "fold_seed": 100704012
+  },
+  {
+    "task_id": 34,
+    "n": 1000,
+    "seed": 4013,
+    "fit_seed": 100004013,
+    "data_seed": 100004013,
+    "fold_seed": 100704013
+  },
+  {
+    "task_id": 35,
+    "n": 1000,
+    "seed": 4014,
+    "fit_seed": 100004014,
+    "data_seed": 100004014,
+    "fold_seed": 100704014
+  },
+  {
+    "task_id": 36,
+    "n": 1000,
+    "seed": 4015,
+    "fit_seed": 100004015,
+    "data_seed": 100004015,
+    "fold_seed": 100704015
+  },
+  {
+    "task_id": 37,
+    "n": 1000,
+    "seed": 4016,
+    "fit_seed": 100004016,
+    "data_seed": 100004016,
+    "fold_seed": 100704016
+  },
+  {
+    "task_id": 38,
+    "n": 1000,
+    "seed": 4017,
+    "fit_seed": 100004017,
+    "data_seed": 100004017,
+    "fold_seed": 100704017
+  },
+  {
+    "task_id": 39,
+    "n": 1000,
+    "seed": 4018,
+    "fit_seed": 100004018,
+    "data_seed": 100004018,
+    "fold_seed": 100704018
+  },
+  {
+    "task_id": 40,
+    "n": 1000,
+    "seed": 4019,
+    "fit_seed": 100004019,
+    "data_seed": 100004019,
+    "fold_seed": 100704019
+  },
+  {
+    "task_id": 41,
+    "n": 1500,
+    "seed": 4000,
+    "fit_seed": 150004000,
+    "data_seed": 150004000,
+    "fold_seed": 150704000
+  },
+  {
+    "task_id": 42,
+    "n": 1500,
+    "seed": 4001,
+    "fit_seed": 150004001,
+    "data_seed": 150004001,
+    "fold_seed": 150704001
+  },
+  {
+    "task_id": 43,
+    "n": 1500,
+    "seed": 4002,
+    "fit_seed": 150004002,
+    "data_seed": 150004002,
+    "fold_seed": 150704002
+  },
+  {
+    "task_id": 44,
+    "n": 1500,
+    "seed": 4003,
+    "fit_seed": 150004003,
+    "data_seed": 150004003,
+    "fold_seed": 150704003
+  },
+  {
+    "task_id": 45,
+    "n": 1500,
+    "seed": 4004,
+    "fit_seed": 150004004,
+    "data_seed": 150004004,
+    "fold_seed": 150704004
+  },
+  {
+    "task_id": 46,
+    "n": 1500,
+    "seed": 4005,
+    "fit_seed": 150004005,
+    "data_seed": 150004005,
+    "fold_seed": 150704005
+  },
+  {
+    "task_id": 47,
+    "n": 1500,
+    "seed": 4006,
+    "fit_seed": 150004006,
+    "data_seed": 150004006,
+    "fold_seed": 150704006
+  },
+  {
+    "task_id": 48,
+    "n": 1500,
+    "seed": 4007,
+    "fit_seed": 150004007,
+    "data_seed": 150004007,
+    "fold_seed": 150704007
+  },
+  {
+    "task_id": 49,
+    "n": 1500,
+    "seed": 4008,
+    "fit_seed": 150004008,
+    "data_seed": 150004008,
+    "fold_seed": 150704008
+  },
+  {
+    "task_id": 50,
+    "n": 1500,
+    "seed": 4009,
+    "fit_seed": 150004009,
+    "data_seed": 150004009,
+    "fold_seed": 150704009
+  },
+  {
+    "task_id": 51,
+    "n": 1500,
+    "seed": 4010,
+    "fit_seed": 150004010,
+    "data_seed": 150004010,
+    "fold_seed": 150704010
+  },
+  {
+    "task_id": 52,
+    "n": 1500,
+    "seed": 4011,
+    "fit_seed": 150004011,
+    "data_seed": 150004011,
+    "fold_seed": 150704011
+  },
+  {
+    "task_id": 53,
+    "n": 1500,
+    "seed": 4012,
+    "fit_seed": 150004012,
+    "data_seed": 150004012,
+    "fold_seed": 150704012
+  },
+  {
+    "task_id": 54,
+    "n": 1500,
+    "seed": 4013,
+    "fit_seed": 150004013,
+    "data_seed": 150004013,
+    "fold_seed": 150704013
+  },
+  {
+    "task_id": 55,
+    "n": 1500,
+    "seed": 4014,
+    "fit_seed": 150004014,
+    "data_seed": 150004014,
+    "fold_seed": 150704014
+  },
+  {
+    "task_id": 56,
+    "n": 1500,
+    "seed": 4015,
+    "fit_seed": 150004015,
+    "data_seed": 150004015,
+    "fold_seed": 150704015
+  },
+  {
+    "task_id": 57,
+    "n": 1500,
+    "seed": 4016,
+    "fit_seed": 150004016,
+    "data_seed": 150004016,
+    "fold_seed": 150704016
+  },
+  {
+    "task_id": 58,
+    "n": 1500,
+    "seed": 4017,
+    "fit_seed": 150004017,
+    "data_seed": 150004017,
+    "fold_seed": 150704017
+  },
+  {
+    "task_id": 59,
+    "n": 1500,
+    "seed": 4018,
+    "fit_seed": 150004018,
+    "data_seed": 150004018,
+    "fold_seed": 150704018
+  },
+  {
+    "task_id": 60,
+    "n": 1500,
+    "seed": 4019,
+    "fit_seed": 150004019,
+    "data_seed": 150004019,
+    "fold_seed": 150704019
+  },
+  {
+    "task_id": 61,
+    "n": 2000,
+    "seed": 4000,
+    "fit_seed": 200004000,
+    "data_seed": 200004000,
+    "fold_seed": 200704000
+  },
+  {
+    "task_id": 62,
+    "n": 2000,
+    "seed": 4001,
+    "fit_seed": 200004001,
+    "data_seed": 200004001,
+    "fold_seed": 200704001
+  },
+  {
+    "task_id": 63,
+    "n": 2000,
+    "seed": 4002,
+    "fit_seed": 200004002,
+    "data_seed": 200004002,
+    "fold_seed": 200704002
+  },
+  {
+    "task_id": 64,
+    "n": 2000,
+    "seed": 4003,
+    "fit_seed": 200004003,
+    "data_seed": 200004003,
+    "fold_seed": 200704003
+  },
+  {
+    "task_id": 65,
+    "n": 2000,
+    "seed": 4004,
+    "fit_seed": 200004004,
+    "data_seed": 200004004,
+    "fold_seed": 200704004
+  },
+  {
+    "task_id": 66,
+    "n": 2000,
+    "seed": 4005,
+    "fit_seed": 200004005,
+    "data_seed": 200004005,
+    "fold_seed": 200704005
+  },
+  {
+    "task_id": 67,
+    "n": 2000,
+    "seed": 4006,
+    "fit_seed": 200004006,
+    "data_seed": 200004006,
+    "fold_seed": 200704006
+  },
+  {
+    "task_id": 68,
+    "n": 2000,
+    "seed": 4007,
+    "fit_seed": 200004007,
+    "data_seed": 200004007,
+    "fold_seed": 200704007
+  },
+  {
+    "task_id": 69,
+    "n": 2000,
+    "seed": 4008,
+    "fit_seed": 200004008,
+    "data_seed": 200004008,
+    "fold_seed": 200704008
+  },
+  {
+    "task_id": 70,
+    "n": 2000,
+    "seed": 4009,
+    "fit_seed": 200004009,
+    "data_seed": 200004009,
+    "fold_seed": 200704009
+  },
+  {
+    "task_id": 71,
+    "n": 2000,
+    "seed": 4010,
+    "fit_seed": 200004010,
+    "data_seed": 200004010,
+    "fold_seed": 200704010
+  },
+  {
+    "task_id": 72,
+    "n": 2000,
+    "seed": 4011,
+    "fit_seed": 200004011,
+    "data_seed": 200004011,
+    "fold_seed": 200704011
+  },
+  {
+    "task_id": 73,
+    "n": 2000,
+    "seed": 4012,
+    "fit_seed": 200004012,
+    "data_seed": 200004012,
+    "fold_seed": 200704012
+  },
+  {
+    "task_id": 74,
+    "n": 2000,
+    "seed": 4013,
+    "fit_seed": 200004013,
+    "data_seed": 200004013,
+    "fold_seed": 200704013
+  },
+  {
+    "task_id": 75,
+    "n": 2000,
+    "seed": 4014,
+    "fit_seed": 200004014,
+    "data_seed": 200004014,
+    "fold_seed": 200704014
+  },
+  {
+    "task_id": 76,
+    "n": 2000,
+    "seed": 4015,
+    "fit_seed": 200004015,
+    "data_seed": 200004015,
+    "fold_seed": 200704015
+  },
+  {
+    "task_id": 77,
+    "n": 2000,
+    "seed": 4016,
+    "fit_seed": 200004016,
+    "data_seed": 200004016,
+    "fold_seed": 200704016
+  },
+  {
+    "task_id": 78,
+    "n": 2000,
+    "seed": 4017,
+    "fit_seed": 200004017,
+    "data_seed": 200004017,
+    "fold_seed": 200704017
+  },
+  {
+    "task_id": 79,
+    "n": 2000,
+    "seed": 4018,
+    "fit_seed": 200004018,
+    "data_seed": 200004018,
+    "fold_seed": 200704018
+  },
+  {
+    "task_id": 80,
+    "n": 2000,
+    "seed": 4019,
+    "fit_seed": 200004019,
+    "data_seed": 200004019,
+    "fold_seed": 200704019
+  }
+]
